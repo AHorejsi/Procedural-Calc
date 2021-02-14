@@ -14,332 +14,338 @@ typedef struct complex_list_t {
 typedef struct quaternion_list_t {
     Quaternion* nums;
     size_t size;
-} QuaternionList;
+} const QuaternionList;
 
-void rplusrl(double, RealList*, RealList*);
+void rplusrl(const double, const RealList*, RealList*);
 
-void rlplusr(RealList*, double, RealList*);
+void rlplusr(const RealList*, const double, RealList*);
 
-void cplusrl(Complex*, RealList*, ComplexList*);
+void cplusrl(const Complex*, const RealList*, ComplexList*);
 
-void rlplusc(RealList*, Complex*, ComplexList*);
+void rlplusc(const RealList*, const Complex*, ComplexList*);
 
-void qplusrl(Quaternion*, RealList*, QuaternionList*);
+void qplusrl(const Quaternion*, const RealList*, QuaternionList*);
 
-void rlplusq(RealList*, Quaternion*, QuaternionList*);
+void rlplusq(const RealList*, const Quaternion*, QuaternionList*);
 
-void rpluscl(double, ComplexList*, ComplexList*);
+void rpluscl(const double, const ComplexList*, ComplexList*);
 
-void clplusr(ComplexList*, double, ComplexList*);
+void clplusr(const ComplexList*, const double, ComplexList*);
 
-void cpluscl(Complex*, ComplexList*, ComplexList*);
+void cpluscl(const Complex*, const ComplexList*, ComplexList*);
 
-void clplusc(ComplexList*, Complex*, ComplexList*);
+void clplusc(const ComplexList*, const Complex*, ComplexList*);
 
-void qpluscl(Quaternion*, ComplexList*, QuaternionList*);
+void qpluscl(const Quaternion*, const ComplexList*, QuaternionList*);
 
-void clplusq(ComplexList*, Quaternion*, QuaternionList*);
+void clplusq(const ComplexList*, const Quaternion*, QuaternionList*);
 
-void rplusql(double, QuaternionList*, QuaternionList*);
+void rplusql(const double, const QuaternionList*, QuaternionList*);
 
-void qlplusr(QuaternionList*, double, QuaternionList*);
+void qlplusr(const QuaternionList*, const double, QuaternionList*);
 
-void cplusql(Complex*, QuaternionList*, QuaternionList*);
+void cplusql(const Complex*, const QuaternionList*, QuaternionList*);
 
-void qlplusc(QuaternionList*, Complex*, QuaternionList*);
+void qlplusc(const QuaternionList*, const Complex*, QuaternionList*);
 
-void qplusql(Quaternion*, QuaternionList*, QuaternionList*);
+void qplusql(const Quaternion*, const QuaternionList*, QuaternionList*);
 
-void qlplusq(QuaternionList*, Quaternion*, QuaternionList*);
+void qlplusq(const QuaternionList*, const Quaternion*, QuaternionList*);
 
-void rlplusrl(RealList*, RealList*, RealList*);
+void rlplusrl(const RealList*, const RealList*, RealList*);
 
-void rlpluscl(RealList*, ComplexList*, ComplexList*);
+void rlpluscl(const RealList*, const ComplexList*, ComplexList*);
 
-void clplusrl(ComplexList*, RealList*, ComplexList*);
+void clplusrl(const ComplexList*, const RealList*, ComplexList*);
 
-void clpluscl(ComplexList*, ComplexList*, ComplexList*);
+void clpluscl(const ComplexList*, const ComplexList*, ComplexList*);
 
-void rlplusql(RealList*, QuaternionList*, QuaternionList*);
+void rlplusql(const RealList*, const QuaternionList*, QuaternionList*);
 
-void qlplusrl(QuaternionList*, RealList*, QuaternionList*);
+void qlplusrl(const QuaternionList*, const RealList*, QuaternionList*);
 
-void clplusql(ComplexList*, QuaternionList*, QuaternionList*);
+void clplusql(const ComplexList*, const QuaternionList*, QuaternionList*);
 
-void qlpluscl(QuaternionList*, ComplexList*, QuaternionList*);
+void qlpluscl(const QuaternionList*, const ComplexList*, QuaternionList*);
 
-void qlplusql(QuaternionList*, QuaternionList*, QuaternionList*);
+void qlplusql(const QuaternionList*, const QuaternionList*, QuaternionList*);
 
-void rminusrl(double, RealList*, RealList*);
+void rminusrl(const double, const RealList*, RealList*);
 
-void rlminusr(RealList*, double, RealList*);
+void rlminusr(const RealList*, const double, RealList*);
 
-void cminusrl(Complex*, RealList*, ComplexList*);
+void cminusrl(const Complex*, const RealList*, ComplexList*);
 
-void rlminusc(RealList*, Complex*, ComplexList*);
+void rlminusc(const RealList*, const Complex*, ComplexList*);
 
-void qminusrl(Quaternion*, RealList*, QuaternionList*);
+void qminusrl(const Quaternion*, const RealList*, QuaternionList*);
 
-void rlminusq(RealList*, Quaternion*, QuaternionList*);
+void rlminusq(const RealList*, const Quaternion*, QuaternionList*);
 
-void rminuscl(double, ComplexList*, ComplexList*);
+void rminuscl(const double, const ComplexList*, ComplexList*);
 
-void clminusr(ComplexList*, double, ComplexList*);
+void clminusr(const ComplexList*, const double, ComplexList*);
 
-void cminuscl(Complex*, ComplexList*, ComplexList*);
+void cminuscl(const Complex*, const ComplexList*, ComplexList*);
 
-void clminusc(ComplexList*, Complex*, ComplexList*);
+void clminusc(const ComplexList*, const Complex*, ComplexList*);
 
-void qminuscl(Quaternion*, ComplexList*, QuaternionList*);
+void qminuscl(const Quaternion*, const ComplexList*, QuaternionList*);
 
-void clminusq(ComplexList*, Quaternion*, QuaternionList*);
+void clminusq(const ComplexList*, const Quaternion*, QuaternionList*);
 
-void rminusql(double, QuaternionList*, QuaternionList*);
+void rminusql(const double, const QuaternionList*, QuaternionList*);
 
-void qlminusr(QuaternionList*, double, QuaternionList*);
+void qlminusr(const QuaternionList*, const double, QuaternionList*);
 
-void cminusql(Complex*, QuaternionList*, QuaternionList*);
+void cminusql(const Complex*, const QuaternionList*, QuaternionList*);
 
-void qlminusc(QuaternionList*, Complex*, QuaternionList*);
+void qlminusc(const QuaternionList*, const Complex*, QuaternionList*);
 
-void qminusql(Quaternion*, QuaternionList*, QuaternionList*);
+void qminusql(const Quaternion*, const QuaternionList*, QuaternionList*);
 
-void qlminusq(QuaternionList*, Quaternion*, QuaternionList*);
+void qlminusq(const QuaternionList*, const Quaternion*, QuaternionList*);
 
-void rlminusrl(RealList*, RealList*, RealList*);
+void rlminusrl(const RealList*, const RealList*, RealList*);
 
-void rlminuscl(RealList*, ComplexList*, ComplexList*);
+void rlminuscl(const RealList*, const ComplexList*, ComplexList*);
 
-void clminusrl(ComplexList*, RealList*, ComplexList*);
+void clminusrl(const ComplexList*, const RealList*, ComplexList*);
 
-void clminuscl(ComplexList*, ComplexList*, ComplexList*);
+void clminuscl(const ComplexList*, const ComplexList*, ComplexList*);
 
-void rlminusql(RealList*, QuaternionList*, QuaternionList*);
+void rlminusql(const RealList*, const QuaternionList*, QuaternionList*);
 
-void qlminusrl(QuaternionList*, RealList*, QuaternionList*);
+void qlminusrl(const QuaternionList*, const RealList*, QuaternionList*);
 
-void clminusql(ComplexList*, QuaternionList*, QuaternionList*);
+void clminusql(const ComplexList*, const QuaternionList*, QuaternionList*);
 
-void qlminuscl(QuaternionList*, ComplexList*, QuaternionList*);
+void qlminuscl(const QuaternionList*, const ComplexList*, QuaternionList*);
 
-void qlminusql(QuaternionList*, QuaternionList*, QuaternionList*);
+void qlminusql(const QuaternionList*, const QuaternionList*, QuaternionList*);
 
-void rmultrl(double, RealList*, RealList*);
+void rmultrl(const double, const RealList*, RealList*);
 
-void rlmultr(RealList*, double, RealList*);
+void rlmultr(const RealList*, const double, RealList*);
 
-void cmultrl(Complex*, RealList*, ComplexList*);
+void cmultrl(const Complex*, const RealList*, ComplexList*);
 
-void rlmultc(RealList*, Complex*, ComplexList*);
+void rlmultc(const RealList*, const Complex*, ComplexList*);
 
-void qmultrl(Quaternion*, RealList*, QuaternionList*);
+void qmultrl(const Quaternion*, const RealList*, QuaternionList*);
 
-void rlmultq(RealList*, Quaternion*, QuaternionList*);
+void rlmultq(const RealList*, const Quaternion*, QuaternionList*);
 
-void rmultcl(double, ComplexList*, ComplexList*);
+void rmultcl(const double, const ComplexList*, ComplexList*);
 
-void clmultr(ComplexList*, double, ComplexList*);
+void clmultr(const ComplexList*, const double, ComplexList*);
 
-void cmultcl(Complex*, ComplexList*, ComplexList*);
+void cmultcl(const Complex*, const ComplexList*, ComplexList*);
 
-void clmultc(ComplexList*, Complex*, ComplexList*);
+void clmultc(const ComplexList*, const Complex*, ComplexList*);
 
-void qmultcl(Quaternion*, ComplexList*, QuaternionList*);
+void qmultcl(const Quaternion*, const ComplexList*, QuaternionList*);
 
-void clmultq(ComplexList*, Quaternion*, QuaternionList*);
+void clmultq(const ComplexList*, const Quaternion*, QuaternionList*);
 
-void rmultql(double, QuaternionList*, QuaternionList*);
+void rmultql(const double, const QuaternionList*, QuaternionList*);
 
-void qlmultr(QuaternionList*, double, QuaternionList*);
+void qlmultr(const QuaternionList*, const double, QuaternionList*);
 
-void cmultql(Complex*, QuaternionList*, QuaternionList*);
+void cmultql(const Complex*, QuaternionList*, QuaternionList*);
 
-void qlmultc(QuaternionList*, Complex*, QuaternionList*);
+void qlmultc(const QuaternionList*, const Complex*, QuaternionList*);
 
-void qmultql(Quaternion*, QuaternionList*, QuaternionList*);
+void qmultql(const Quaternion*, const QuaternionList*, QuaternionList*);
 
-void qlmultq(QuaternionList*, Quaternion*, QuaternionList*);
+void qlmultq(const QuaternionList*, const Quaternion*, QuaternionList*);
 
-void rlmultrl(RealList*, RealList*, RealList*);
+void rlmultrl(const RealList*, const RealList*, RealList*);
 
-void rlmultcl(RealList*, ComplexList*, ComplexList*);
+void rlmultcl(const RealList*, const ComplexList*, ComplexList*);
 
-void clmultrl(ComplexList*, RealList*, ComplexList*);
+void clmultrl(const ComplexList*, const RealList*, ComplexList*);
 
-void clmultcl(ComplexList*, ComplexList*, ComplexList*);
+void clmultcl(const ComplexList*, const ComplexList*, ComplexList*);
 
-void rlmultql(RealList*, QuaternionList*, QuaternionList*);
+void rlmultql(const RealList*, const QuaternionList*, QuaternionList*);
 
-void qlmultrl(QuaternionList*, RealList*, QuaternionList*);
+void qlmultrl(const QuaternionList*, const RealList*, QuaternionList*);
 
-void clmultql(ComplexList*, QuaternionList*, QuaternionList*);
+void clmultql(const ComplexList*, const QuaternionList*, QuaternionList*);
 
-void qlmultcl(QuaternionList*, ComplexList*, QuaternionList*);
+void qlmultcl(const QuaternionList*, const ComplexList*, QuaternionList*);
 
-void qlmultql(QuaternionList*, QuaternionList*, QuaternionList*);
+void qlmultql(const QuaternionList*, const QuaternionList*, QuaternionList*);
 
-void rdivrl(double, RealList*, RealList*);
+void rdivrl(const double, const RealList*, RealList*);
 
-void rldivr(RealList*, double, RealList*);
+void rldivr(const RealList*, const double, RealList*);
 
-void cdivrl(Complex*, RealList*, ComplexList*);
+void cdivrl(const Complex*, const RealList*, ComplexList*);
 
-void rldivc(RealList*, Complex*, ComplexList*);
+void rldivc(const RealList*, const Complex*, ComplexList*);
 
-void qdivrl(Quaternion*, RealList*, QuaternionList*);
+void qdivrl(const Quaternion*, const RealList*, QuaternionList*);
 
-void rldivq(RealList*, Quaternion*, QuaternionList*);
+void rldivq(const RealList*, const Quaternion*, QuaternionList*);
 
-void rdivcl(double, ComplexList*, ComplexList*);
+void rdivcl(const double, const ComplexList*, ComplexList*);
 
-void cldivr(ComplexList*, double, ComplexList*);
+void cldivr(const ComplexList*, const double, ComplexList*);
 
-void cdivcl(Complex*, ComplexList*, ComplexList*);
+void cdivcl(const Complex*, const ComplexList*, ComplexList*);
 
-void cldivc(ComplexList*, Complex*, ComplexList*);
+void cldivc(const ComplexList*, const Complex*, ComplexList*);
 
-void qdivcl(Quaternion*, ComplexList*, QuaternionList*);
+void qdivcl(const Quaternion*, const ComplexList*, QuaternionList*);
 
-void cldivq(ComplexList*, Quaternion*, QuaternionList*);
+void cldivq(const ComplexList*, const Quaternion*, QuaternionList*);
 
-void rdivql(double, QuaternionList*, QuaternionList*);
+void rdivql(const double, const QuaternionList*, QuaternionList*);
 
-void qldivr(QuaternionList*, double, QuaternionList*);
+void qldivr(const QuaternionList*, const double, QuaternionList*);
 
-void cdivql(Complex*, QuaternionList*, QuaternionList*);
+void cdivql(const Complex*, const QuaternionList*, QuaternionList*);
 
-void qldivc(QuaternionList*, Complex*, QuaternionList*);
+void qldivc(const QuaternionList*, const Complex*, QuaternionList*);
 
-void qdivql(Quaternion*, QuaternionList*, QuaternionList*);
+void qdivql(const Quaternion*, const QuaternionList*, QuaternionList*);
 
-void qldivq(QuaternionList*, Quaternion*, QuaternionList*);
+void qldivq(const QuaternionList*, const Quaternion*, QuaternionList*);
 
-void rldivrl(RealList*, RealList*, RealList*);
+void rldivrl(const RealList*, const RealList*, RealList*);
 
-void rldivcl(RealList*, ComplexList*, ComplexList*);
+void rldivcl(const RealList*, const ComplexList*, ComplexList*);
 
-void cldivrl(ComplexList*, RealList*, ComplexList*);
+void cldivrl(const ComplexList*, const RealList*, ComplexList*);
 
-void cldivcl(ComplexList*, ComplexList*, ComplexList*);
+void cldivcl(const ComplexList*, const ComplexList*, ComplexList*);
 
-void rldivql(RealList*, QuaternionList*, QuaternionList*);
+void rldivql(const RealList*, const QuaternionList*, QuaternionList*);
 
-void qldivrl(QuaternionList*, RealList*, QuaternionList*);
+void qldivrl(const QuaternionList*, const RealList*, QuaternionList*);
 
-void cldivql(ComplexList*, QuaternionList*, QuaternionList*);
+void cldivql(const ComplexList*, const QuaternionList*, QuaternionList*);
 
-void qldivcl(QuaternionList*, ComplexList*, QuaternionList*);
+void qldivcl(const QuaternionList*, const ComplexList*, QuaternionList*);
 
-void qldivql(QuaternionList*, QuaternionList*, QuaternionList*);
+void qldivql(const QuaternionList*, const QuaternionList*, QuaternionList*);
 
-void rpowrl(double, RealList*, RealList*);
+void rpowrl(const double, const RealList*, RealList*);
 
-void rlpowr(RealList*, double, RealList*);
+void rlpowr(const RealList*, const double, RealList*);
 
-void cpowrl(Complex*, RealList*, ComplexList*);
+void cpowrl(const Complex*, const RealList*, ComplexList*);
 
-void rlpowc(RealList*, Complex*, ComplexList*);
+void rlpowc(const RealList*, const Complex*, ComplexList*);
 
-void qpowrl(Quaternion*, RealList*, QuaternionList*);
+void qpowrl(const Quaternion*, const RealList*, QuaternionList*);
 
-void rlpowq(RealList*, Quaternion*, QuaternionList*);
+void rlpowq(const RealList*, const Quaternion*, QuaternionList*);
 
-void rpowcl(double, ComplexList*, ComplexList*);
+void rpowcl(const double, const ComplexList*, ComplexList*);
 
-void clpowr(ComplexList*, double, ComplexList*);
+void clpowr(const ComplexList*, const double, ComplexList*);
 
-void cpowcl(Complex*, ComplexList*, ComplexList*);
+void cpowcl(const Complex*, const ComplexList*, ComplexList*);
 
-void clpowc(ComplexList*, Complex*, ComplexList*);
+void clpowc(const ComplexList*, const Complex*, ComplexList*);
 
-void qpowcl(Quaternion*, ComplexList*, QuaternionList*);
+void qpowcl(const Quaternion*, const ComplexList*, QuaternionList*);
 
-void clpowq(ComplexList*, Quaternion*, QuaternionList*);
+void clpowq(const ComplexList*, const Quaternion*, QuaternionList*);
 
-void rpowql(double, QuaternionList*, QuaternionList*);
+void rpowql(const double, const QuaternionList*, QuaternionList*);
 
-void qlpowr(QuaternionList*, double, QuaternionList*);
+void qlpowr(const QuaternionList*, const double, QuaternionList*);
 
-void cpowql(Complex*, QuaternionList*, QuaternionList*);
+void cpowql(const Complex*, const QuaternionList*, QuaternionList*);
 
-void qlpowc(QuaternionList*, Complex*, QuaternionList*);
+void qlpowc(const QuaternionList*, const Complex*, QuaternionList*);
 
-void qpowql(Quaternion*, QuaternionList*, QuaternionList*);
+void qpowql(const Quaternion*, const QuaternionList*, QuaternionList*);
 
-void qlpowq(QuaternionList*, Quaternion*, QuaternionList*);
+void qlpowq(const QuaternionList*, const Quaternion*, QuaternionList*);
 
-void rlpowrl(RealList*, RealList*, RealList*);
+void rlpowrl(const RealList*, const RealList*, RealList*);
 
-void rlpowcl(RealList*, ComplexList*, ComplexList*);
+void rlpowcl(const RealList*, const ComplexList*, ComplexList*);
 
-void clpowrl(ComplexList*, RealList*, ComplexList*);
+void clpowrl(const ComplexList*, const RealList*, ComplexList*);
 
-void clpowcl(ComplexList*, ComplexList*, ComplexList*);
+void clpowcl(const ComplexList*, const ComplexList*, ComplexList*);
 
-void rlpowql(RealList*, QuaternionList*, QuaternionList*);
+void rlpowql(const RealList*, const QuaternionList*, QuaternionList*);
 
-void qlpowrl(QuaternionList*, RealList*, QuaternionList*);
+void qlpowrl(const QuaternionList*, const RealList*, QuaternionList*);
 
-void clpowql(ComplexList*, QuaternionList*, QuaternionList*);
+void clpowql(const ComplexList*, const QuaternionList*, QuaternionList*);
 
-void qlpowcl(QuaternionList*, ComplexList*, QuaternionList*);
+void qlpowcl(const QuaternionList*, const ComplexList*, QuaternionList*);
 
-void qlpowql(QuaternionList*, QuaternionList*, QuaternionList*);
+void qlpowql(const QuaternionList*, const QuaternionList*, QuaternionList*);
 
-int rleqrl(RealList*, RealList*, double);
+void rlneg(const RealList*, RealList*);
 
-int rleqcl(RealList*, ComplexList*, double);
+void clneg(const ComplexList*, ComplexList*);
 
-int cleqrl(ComplexList*, RealList*, double);
+void qlneg(const QuaternionList*, QuaternionList*);
 
-int cleqcl(ComplexList*, ComplexList*, double);
+int rleqrl(const RealList*, const RealList*, const double);
 
-int rleqql(RealList*, QuaternionList*, double);
+int rleqcl(const RealList*, const ComplexList*, const double);
 
-int qleqrl(QuaternionList*, RealList*, double);
+int cleqrl(const ComplexList*, const RealList*, const double);
 
-int cleqql(ComplexList*, QuaternionList*, double);
+int cleqcl(const ComplexList*, const ComplexList*, const double);
 
-int qleqcl(QuaternionList*, ComplexList*, double);
+int rleqql(const RealList*, const QuaternionList*, const double);
 
-int qleqql(QuaternionList*, QuaternionList*, double);
+int qleqrl(const QuaternionList*, const RealList*, const double);
 
-void rlmin(RealList*, double*);
+int cleqql(const ComplexList*, const QuaternionList*, const double);
 
-void rlmax(RealList*, double*);
+int qleqcl(const QuaternionList*, const ComplexList*, const double);
 
-void rlsum(RealList*, double*);
+int qleqql(const QuaternionList*, const QuaternionList*, const double);
 
-void clsum(ComplexList*, Complex*);
+void rlmin(const RealList*, double*);
 
-void qlsum(QuaternionList*, Quaternion*);
+void rlmax(const RealList*, double*);
 
-void rlmean(RealList*, double*);
+void rlsum(const RealList*, double*);
 
-void clmean(ComplexList*, Complex*);
+void clsum(const ComplexList*, Complex*);
 
-void qlmean(QuaternionList*, Quaternion*);
+void qlsum(const QuaternionList*, Quaternion*);
 
-void rlmedian(RealList*, double*);
+void rlmean(const RealList*, double*);
 
-void rlmode(RealList*, double*);
+void clmean(const ComplexList*, Complex*);
 
-void clmode(ComplexList*, ComplexList*);
+void qlmean(const QuaternionList*, Quaternion*);
 
-void qlmode(QuaternionList*, Quaternion*);
+void rlmedian(const RealList*, double*);
 
-void rlmidrange(RealList*, double*);
+void rlmode(const RealList*, double*);
 
-void rlrange(RealList*, double*);
+void clmode(const ComplexList*, ComplexList*);
 
-void rlvariance(RealList*, double*);
+void qlmode(const QuaternionList*, Quaternion*);
 
-void clvariance(ComplexList*, Complex*);
+void rlmidrange(const RealList*, double*);
 
-void qlvariance(QuaternionList*, Quaternion*);
+void rlrange(const RealList*, double*);
 
-void rlstddev(RealList*, double*);
+void rlvariance(const RealList*, double*);
 
-void clstddev(ComplexList*, Complex*);
+void clvariance(const ComplexList*, Complex*);
 
-void qlstddev(QuaternionList*, Quaternion*);
+void qlvariance(const QuaternionList*, Quaternion*);
+
+void rlstddev(const RealList*, double*);
+
+void clstddev(const ComplexList*, Complex*);
+
+void qlstddev(const QuaternionList*, Quaternion*);

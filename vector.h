@@ -16,180 +16,186 @@ typedef struct quaternion_vector_t {
     size_t dimensions;
 } QuaternionVector;
 
-void rvplusrv(RealVector*, RealVector*, RealVector*);
+void rvplusrv(const RealVector*, const RealVector*, RealVector*);
 
-void rvpluscv(RealVector*, ComplexVector*, ComplexVector*);
+void rvpluscv(const RealVector*, const ComplexVector*, ComplexVector*);
 
-void cvplusrv(ComplexVector*, RealVector*, ComplexVector*);
+void cvplusrv(const ComplexVector*, const RealVector*, ComplexVector*);
 
-void cvpluscv(ComplexVector*, ComplexVector*, ComplexVector*);
+void cvpluscv(const ComplexVector*, const ComplexVector*, ComplexVector*);
 
-void rvplusqv(RealVector*, QuaternionVector*, QuaternionVector*);
+void rvplusqv(const RealVector*, const QuaternionVector*, QuaternionVector*);
 
-void qvplusrv(QuaternionVector*, RealVector*, QuaternionVector*);
+void qvplusrv(const QuaternionVector*, const RealVector*, QuaternionVector*);
 
-void cvplusqv(ComplexVector*, QuaternionVector*, QuaternionVector*);
+void cvplusqv(const ComplexVector*, const QuaternionVector*, QuaternionVector*);
 
-void qvpluscv(QuaternionVector*, ComplexVector*, QuaternionVector*);
+void qvpluscv(const QuaternionVector*, const ComplexVector*, QuaternionVector*);
 
-void qvplusqv(QuaternionVector*, QuaternionVector*, QuaternionVector*);
+void qvplusqv(const QuaternionVector*, const QuaternionVector*, QuaternionVector*);
 
-void rvminusrv(RealVector*, RealVector*, RealVector*);
+void rvminusrv(const RealVector*, const RealVector*, RealVector*);
 
-void rvminuscv(RealVector*, ComplexVector*, ComplexVector*);
+void rvminuscv(const RealVector*, const ComplexVector*, ComplexVector*);
 
-void cvminusrv(ComplexVector*, RealVector*, ComplexVector*);
+void cvminusrv(const ComplexVector*, const RealVector*, ComplexVector*);
 
-void cvminuscv(ComplexVector*, ComplexVector*, ComplexVector*);
+void cvminuscv(const ComplexVector*, const ComplexVector*, ComplexVector*);
 
-void rvminusqv(RealVector*, QuaternionVector*, QuaternionVector*);
+void rvminusqv(const RealVector*, const QuaternionVector*, QuaternionVector*);
 
-void qvminusrv(QuaternionVector*, RealVector*, QuaternionVector*);
+void qvminusrv(const QuaternionVector*, const RealVector*, QuaternionVector*);
 
-void cvminusqv(ComplexVector*, QuaternionVector*, QuaternionVector*);
+void cvminusqv(const ComplexVector*, const QuaternionVector*, QuaternionVector*);
 
-void qvminuscv(QuaternionVector*, ComplexVector*, QuaternionVector*);
+void qvminuscv(const QuaternionVector*, const ComplexVector*, QuaternionVector*);
 
-void qvminusqv(QuaternionVector*, QuaternionVector*, QuaternionVector*);
+void qvminusqv(const QuaternionVector*, const QuaternionVector*, QuaternionVector*);
 
-void rmultrv(double, RealVector*, RealVector*);
+void rmultrv(const double, const RealVector*, RealVector*);
 
-void rvmultr(RealVector*, double, RealVector*);
+void rvmultr(const RealVector*, const double, RealVector*);
 
-void cmultrv(Complex*, RealVector*, ComplexVector*);
+void cmultrv(const Complex*, const RealVector*, ComplexVector*);
 
-void rvmultc(RealVector*, Complex*, ComplexVector*);
+void rvmultc(const RealVector*, const Complex*, ComplexVector*);
 
-void qmultrv(Quaternion*, RealVector*, QuaternionVector*);
+void qmultrv(const Quaternion*, const RealVector*, QuaternionVector*);
 
-void rvmultq(RealVector*, Quaternion*, QuaternionVector*);
+void rvmultq(const RealVector*, const Quaternion*, QuaternionVector*);
 
-void rmultcv(double, ComplexVector*, ComplexVector*);
+void rmultcv(const double, const ComplexVector*, ComplexVector*);
 
-void cvmultr(ComplexVector*, double, ComplexVector*);
+void cvmultr(const ComplexVector*, const double, ComplexVector*);
 
-void cmultcv(Complex*, ComplexVector*, ComplexVector*);
+void cmultcv(const Complex*, const ComplexVector*, ComplexVector*);
 
-void cvmultc(ComplexVector*, Complex*, ComplexVector*);
+void cvmultc(const ComplexVector*, const Complex*, ComplexVector*);
 
-void qmultcv(Quaternion*, ComplexVector*, QuaternionVector*);
+void qmultcv(const Quaternion*, const ComplexVector*, QuaternionVector*);
 
-void cvmultq(ComplexVector*, Quaternion*, QuaternionVector*);
+void cvmultq(const ComplexVector*, const Quaternion*, QuaternionVector*);
 
-void rmultqv(double, QuaternionVector*, QuaternionVector*);
+void rmultqv(const double, const QuaternionVector*, QuaternionVector*);
 
-void qvmultr(QuaternionVector*, double, QuaternionVector*);
+void qvmultr(const QuaternionVector*, const double, QuaternionVector*);
 
-void cmultqv(Complex*, QuaternionVector*, QuaternionVector*);
+void cmultqv(const Complex*, const QuaternionVector*, QuaternionVector*);
 
-void qvmultc(QuaternionVector*, Complex*, QuaternionVector*);
+void qvmultc(const QuaternionVector*, const Complex*, QuaternionVector*);
 
-void qmultqv(Quaternion*, QuaternionVector*, QuaternionVector*);
+void qmultqv(const Quaternion*, const QuaternionVector*, QuaternionVector*);
 
-void qvmultq(QuaternionVector*, Quaternion*, QuaternionVector*);
+void qvmultq(const QuaternionVector*, const Quaternion*, QuaternionVector*);
 
-void rvdotrv(RealVector*, RealVector*, double*);
+void rvdotrv(const RealVector*, const RealVector*, double*);
 
-void rvdotcv(RealVector*, ComplexVector*, Complex*);
+void rvdotcv(const RealVector*, const ComplexVector*, Complex*);
 
-void cvdotrv(ComplexVector*, RealVector*, Complex*);
+void cvdotrv(const ComplexVector*, const RealVector*, Complex*);
 
-void cvdotcv(ComplexVector*, ComplexVector*, Complex*);
+void cvdotcv(const ComplexVector*, const ComplexVector*, Complex*);
 
-void rvdotqv(RealVector*, QuaternionVector*, Quaternion*);
+void rvdotqv(const RealVector*, const QuaternionVector*, Quaternion*);
 
-void qvdotrv(QuaternionVector*, RealVector*, Quaternion*);
+void qvdotrv(const QuaternionVector*, const RealVector*, Quaternion*);
 
-void cvdotqv(ComplexVector*, QuaternionVector*, Quaternion*);
+void cvdotqv(const ComplexVector*, const QuaternionVector*, Quaternion*);
 
-void qvdotcv(QuaternionVector*, ComplexVector*, Quaternion*);
+void qvdotcv(const QuaternionVector*, const ComplexVector*, Quaternion*);
 
-void qvdotqv(QuaternionVector*, QuaternionVector*, Quaternion*);
+void qvdotqv(const QuaternionVector*, const QuaternionVector*, Quaternion*);
 
-void rvcrossrv(RealVector*, RealVector*, RealVector*);
+void rvcrossrv(const RealVector*, const RealVector*, RealVector*);
 
-void rvcrosscv(RealVector*, ComplexVector*, ComplexVector*);
+void rvcrosscv(const RealVector*, const ComplexVector*, ComplexVector*);
 
-void cvcrossrv(ComplexVector*, RealVector*, ComplexVector*);
+void cvcrossrv(const ComplexVector*, const RealVector*, ComplexVector*);
 
-void cvcrosscv(ComplexVector*, ComplexVector*, ComplexVector*);
+void cvcrosscv(const ComplexVector*, const ComplexVector*, ComplexVector*);
 
-void rvcrossqv(RealVector*, QuaternionVector*, QuaternionVector*);
+void rvcrossqv(const RealVector*, const QuaternionVector*, QuaternionVector*);
 
-void qvcrossrv(QuaternionVector*, RealVector*, QuaternionVector*);
+void qvcrossrv(const QuaternionVector*, const RealVector*, QuaternionVector*);
 
-void cvcrossqv(ComplexVector*, QuaternionVector*, QuaternionVector*);
+void cvcrossqv(const ComplexVector*, QuaternionVector*, QuaternionVector*);
 
-void qvcrosscv(QuaternionVector*, ComplexVector*, QuaternionVector*);
+void qvcrosscv(const QuaternionVector*, const ComplexVector*, QuaternionVector*);
 
-void qvcrossqv(QuaternionVector*, QuaternionVector*, QuaternionVector*);
+void qvcrossqv(const QuaternionVector*, const QuaternionVector*, QuaternionVector*);
 
-void rvdivr(RealVector*, double, RealVector*);
+void rvdivr(const RealVector*, const double, RealVector*);
 
-void rvdivc(RealVector*, Complex*, ComplexVector*);
+void rvdivc(const RealVector*, const Complex*, ComplexVector*);
 
-void rvdivq(RealVector*, Quaternion*, QuaternionVector*);
+void rvdivq(const RealVector*, const Quaternion*, QuaternionVector*);
 
-void cvdivr(ComplexVector*, double, ComplexVector*);
+void cvdivr(const ComplexVector*, const double, ComplexVector*);
 
-void cvdivc(ComplexVector*, Complex*, ComplexVector*);
+void cvdivc(const ComplexVector*, const Complex*, ComplexVector*);
 
-void cvdivq(ComplexVector*, Quaternion*, QuaternionVector*);
+void cvdivq(const ComplexVector*, const Quaternion*, QuaternionVector*);
 
-void qvdivr(QuaternionVector*, double, QuaternionVector*);
+void qvdivr(const QuaternionVector*, const double, QuaternionVector*);
 
-void qvdivc(QuaternionVector*, Complex*, QuaternionVector*);
+void qvdivc(const QuaternionVector*, const Complex*, QuaternionVector*);
 
-void qvdivq(QuaternionVector*, Quaternion*, QuaternionVector*);
+void qvdivq(const QuaternionVector*, const Quaternion*, QuaternionVector*);
 
-int rveqrv(RealVector*, RealVector*, double);
+void rvneg(const RealVector*, RealVector*);
 
-int rveqcv(RealVector*, ComplexVector*, double);
+void cvneg(const ComplexVector*, ComplexVector*);
 
-int cveqrv(ComplexVector*, RealVector*, double);
+void qvneg(const QuaternionVector*, QuaternionVector*);
 
-int cveqcv(ComplexVector*, ComplexVector*, double);
+int rveqrv(const RealVector*, const RealVector*, const double);
 
-int rveqqv(RealVector*, QuaternionVector*, double);
+int rveqcv(const RealVector*, const ComplexVector*, const double);
 
-int qveqrv(QuaternionVector*, RealVector*, double);
+int cveqrv(const ComplexVector*, const RealVector*, const double);
 
-int cveqqv(ComplexVector*, QuaternionVector*, double);
+int cveqcv(const ComplexVector*, const ComplexVector*, const double);
 
-int qveqcv(QuaternionVector*, ComplexVector*, double);
+int rveqqv(const RealVector*, const QuaternionVector*, const double);
 
-int qveqqv(QuaternionVector*, QuaternionVector*, double);
+int qveqrv(const QuaternionVector*, const RealVector*, const double);
 
-void rvmagn(RealVector*, double*);
+int cveqqv(const ComplexVector*, const QuaternionVector*, const double);
 
-void cvmagn(ComplexVector*, Complex*);
+int qveqcv(const QuaternionVector*, const ComplexVector*, const double);
 
-void qvmagn(QuaternionVector*, Quaternion*);
+int qveqqv(const QuaternionVector*, const QuaternionVector*, const double);
 
-void rvnorm(RealVector*, RealVector*);
+void rvmagn(const RealVector*, double*);
 
-void cvnorm(ComplexVector*, ComplexVector*);
+void cvmagn(const ComplexVector*, Complex*);
 
-void qvnorm(QuaternionVector*, QuaternionVector*);
+void qvmagn(const QuaternionVector*, Quaternion*);
 
-void rvangle(RealVector*, double*);
+void rvnorm(const RealVector*, RealVector*);
 
-void cvangle(ComplexVector*, Complex*);
+void cvnorm(const ComplexVector*, ComplexVector*);
 
-void rvdistrv(RealVector*, RealVector*, double*);
+void qvnorm(const QuaternionVector*, QuaternionVector*);
 
-void rvdistcv(RealVector*, ComplexVector*, Complex*);
+void rvangle(const RealVector*, double*);
 
-void cvdistrv(ComplexVector*, RealVector*, Complex*);
+void cvangle(const ComplexVector*, Complex*);
 
-void cvdistcv(ComplexVector*, ComplexVector*, Complex*);
+void rvdistrv(const RealVector*, RealVector*, double*);
 
-void rvdistqv(RealVector*, QuaternionVector*, Quaternion*);
+void rvdistcv(const RealVector*, const ComplexVector*, Complex*);
 
-void qvdistrv(QuaternionVector*, RealVector*, Quaternion*);
+void cvdistrv(const ComplexVector*, const RealVector*, Complex*);
 
-void cvdistqv(ComplexVector*, QuaternionVector*, Quaternion*);
+void cvdistcv(const ComplexVector*, const ComplexVector*, Complex*);
 
-void qvdistcv(QuaternionVector*, ComplexVector*, Quaternion*);
+void rvdistqv(const RealVector*, const QuaternionVector*, Quaternion*);
 
-void qvdistqv(QuaternionVector*, QuaternionVector*, Quaternion*);
+void qvdistrv(const QuaternionVector*, const RealVector*, Quaternion*);
+
+void cvdistqv(const ComplexVector*, const QuaternionVector*, Quaternion*);
+
+void qvdistcv(const QuaternionVector*, const ComplexVector*, Quaternion*);
+
+void qvdistqv(const QuaternionVector*, const QuaternionVector*, Quaternion*);

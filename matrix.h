@@ -19,186 +19,192 @@ typedef struct quaternion_matrix_t {
     size_t cols;
 } QuaternionMatrix;
 
-void rmplusrm(RealMatrix*, RealMatrix*, RealMatrix*);
+void rmplusrm(const RealMatrix*, const RealMatrix*, RealMatrix*);
 
-void rmpluscm(RealMatrix*, ComplexMatrix*, RealMatrix*);
+void rmpluscm(const RealMatrix*, const ComplexMatrix*, RealMatrix*);
 
-void cmplusrm(ComplexMatrix*, RealMatrix*, ComplexMatrix*);
+void cmplusrm(const ComplexMatrix*, const RealMatrix*, ComplexMatrix*);
 
-void cmpluscm(ComplexMatrix*, ComplexMatrix*, ComplexMatrix*);
+void cmpluscm(const ComplexMatrix*, const ComplexMatrix*, ComplexMatrix*);
 
-void rmplusqm(RealMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void rmplusqm(const RealMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void qmplusrm(QuaternionMatrix*, RealMatrix*, QuaternionMatrix*);
+void qmplusrm(const QuaternionMatrix*, const RealMatrix*, QuaternionMatrix*);
 
-void cmplusqm(ComplexMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void cmplusqm(const ComplexMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void qmpluscm(QuaternionMatrix*, ComplexMatrix*, QuaternionMatrix*);
+void qmpluscm(const QuaternionMatrix*, const ComplexMatrix*, QuaternionMatrix*);
 
-void qmplusqm(QuaternionMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void qmplusqm(const QuaternionMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void rmminusrm(RealMatrix*, RealMatrix*, RealMatrix*);
+void rmminusrm(const RealMatrix*, const RealMatrix*, RealMatrix*);
 
-void rmminuscm(RealMatrix*, ComplexMatrix*, RealMatrix*);
+void rmminuscm(const RealMatrix*, const ComplexMatrix*, RealMatrix*);
 
-void cmminusrm(ComplexMatrix*, RealMatrix*, ComplexMatrix*);
+void cmminusrm(const ComplexMatrix*, const RealMatrix*, ComplexMatrix*);
 
-void cmminuscm(ComplexMatrix*, ComplexMatrix*, ComplexMatrix*);
+void cmminuscm(const ComplexMatrix*, const ComplexMatrix*, ComplexMatrix*);
 
-void rmminusqm(RealMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void rmminusqm(const RealMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void qmminusrm(QuaternionMatrix*, RealMatrix*, QuaternionMatrix*);
+void qmminusrm(const QuaternionMatrix*, const RealMatrix*, QuaternionMatrix*);
 
-void cmminusqm(ComplexMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void cmminusqm(const ComplexMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void qmminuscm(QuaternionMatrix*, ComplexMatrix*, QuaternionMatrix*);
+void qmminuscm(const QuaternionMatrix*, const ComplexMatrix*, QuaternionMatrix*);
 
-void qmminusqm(QuaternionMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void qmminusqm(const QuaternionMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void rmultrm(double, RealMatrix*, RealMatrix*);
+void rmultrm(const double, const RealMatrix*, RealMatrix*);
 
-void rmmultr(RealMatrix*, double, RealMatrix*);
+void rmmultr(const RealMatrix*, const double, RealMatrix*);
 
-void cmultrm(Complex*, RealMatrix*, ComplexMatrix*);
+void cmultrm(const Complex*, const RealMatrix*, ComplexMatrix*);
 
-void rmmultc(RealMatrix*, Complex*, RealMatrix*);
+void rmmultc(const RealMatrix*, const Complex*, RealMatrix*);
 
-void qmultrm(Quaternion*, RealMatrix*, QuaternionMatrix*);
+void qmultrm(const Quaternion*, const RealMatrix*, QuaternionMatrix*);
 
-void rmmultq(RealMatrix*, Quaternion*, QuaternionMatrix*);
+void rmmultq(const RealMatrix*, const Quaternion*, QuaternionMatrix*);
 
-void rmultcm(double, ComplexMatrix*, ComplexMatrix*);
+void rmultcm(const double, const ComplexMatrix*, ComplexMatrix*);
 
-void cmmultr(ComplexMatrix*, double, ComplexMatrix*);
+void cmmultr(const ComplexMatrix*, const double, ComplexMatrix*);
 
-void cmultcm(Complex*, ComplexMatrix*, ComplexMatrix*);
+void cmultcm(const Complex*, const ComplexMatrix*, ComplexMatrix*);
 
-void cmmultc(ComplexMatrix*, Complex*, RealMatrix*);
+void cmmultc(const ComplexMatrix*, const Complex*, RealMatrix*);
 
-void qmultcm(Quaternion*, ComplexMatrix*, QuaternionMatrix*);
+void qmultcm(const Quaternion*, const ComplexMatrix*, QuaternionMatrix*);
 
-void cmmultq(ComplexMatrix*, Quaternion*, QuaternionMatrix*);
+void cmmultq(const ComplexMatrix*, const Quaternion*, QuaternionMatrix*);
 
-void rmultqm(double, QuaternionMatrix*, QuaternionMatrix*);
+void rmultqm(const double, const QuaternionMatrix*, QuaternionMatrix*);
 
-void qmmultr(QuaternionMatrix*, double, QuaternionMatrix*);
+void qmmultr(const QuaternionMatrix*, const double, QuaternionMatrix*);
 
-void cmultqm(Complex*, QuaternionMatrix*, QuaternionMatrix*);
+void cmultqm(const Complex*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void qmmultc(QuaternionMatrix*, Complex*, QuaternionMatrix*);
+void qmmultc(const QuaternionMatrix*, const Complex*, QuaternionMatrix*);
 
-void qmultqm(Quaternion*, QuaternionMatrix*, QuaternionMatrix*);
+void qmultqm(const Quaternion*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void qmmultq(QuaternionMatrix*, Quaternion*, QuaternionMatrix*);
+void qmmultq(const QuaternionMatrix*, const Quaternion*, QuaternionMatrix*);
 
-void rmmultrm(RealMatrix*, RealMatrix*, RealMatrix*);
+void rmmultrm(const RealMatrix*, const RealMatrix*, RealMatrix*);
 
-void rmmultcm(RealMatrix*, ComplexMatrix*, RealMatrix*);
+void rmmultcm(const RealMatrix*, const ComplexMatrix*, RealMatrix*);
 
-void cmmultrm(ComplexMatrix*, RealMatrix*, ComplexMatrix*);
+void cmmultrm(const ComplexMatrix*, const RealMatrix*, ComplexMatrix*);
 
-void cmmultcm(ComplexMatrix*, ComplexMatrix*, ComplexMatrix*);
+void cmmultcm(const ComplexMatrix*, const ComplexMatrix*, ComplexMatrix*);
 
-void rmmultqm(RealMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void rmmultqm(const RealMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void qmmultrm(QuaternionMatrix*, RealMatrix*, QuaternionMatrix*);
+void qmmultrm(const QuaternionMatrix*, const RealMatrix*, QuaternionMatrix*);
 
-void cmmultqm(ComplexMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void cmmultqm(const ComplexMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void qmmultcm(QuaternionMatrix*, ComplexMatrix*, QuaternionMatrix*);
+void qmmultcm(const QuaternionMatrix*, const ComplexMatrix*, QuaternionMatrix*);
 
-void qmmultqm(QuaternionMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void qmmultqm(const QuaternionMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void rmscalerm(RealMatrix*, RealMatrix*, RealMatrix*);
+void rmscalerm(const RealMatrix*, const RealMatrix*, RealMatrix*);
 
-void rmscalecm(RealMatrix*, ComplexMatrix*, RealMatrix*);
+void rmscalecm(const RealMatrix*, const ComplexMatrix*, RealMatrix*);
 
-void cmscalerm(ComplexMatrix*, RealMatrix*, ComplexMatrix*);
+void cmscalerm(const ComplexMatrix*, const RealMatrix*, ComplexMatrix*);
 
-void cmscalecm(ComplexMatrix*, ComplexMatrix*, ComplexMatrix*);
+void cmscalecm(const ComplexMatrix*, const ComplexMatrix*, ComplexMatrix*);
 
-void rmscaleqm(RealMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void rmscaleqm(const RealMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void qmscalerm(QuaternionMatrix*, RealMatrix*, QuaternionMatrix*);
+void qmscalerm(const QuaternionMatrix*, const RealMatrix*, QuaternionMatrix*);
 
-void cmscaleqm(ComplexMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void cmscaleqm(const ComplexMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void qmscalecm(QuaternionMatrix*, ComplexMatrix*, QuaternionMatrix*);
+void qmscalecm(const QuaternionMatrix*, const ComplexMatrix*, QuaternionMatrix*);
 
-void qmscaleqm(QuaternionMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void qmscaleqm(const QuaternionMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void rmdivr(RealMatrix*, double, RealMatrix*);
+void rmdivr(const RealMatrix*, const double, RealMatrix*);
 
-void rmdivc(RealMatrix*, Complex*, ComplexMatrix*);
+void rmdivc(const RealMatrix*, const Complex*, ComplexMatrix*);
 
-void rmdivq(RealMatrix*, Quaternion*, QuaternionMatrix*);
+void rmdivq(const RealMatrix*, const Quaternion*, QuaternionMatrix*);
 
-void cmdivr(ComplexMatrix*, double, ComplexMatrix*);
+void cmdivr(const ComplexMatrix*, const double, ComplexMatrix*);
 
-void cmdivc(ComplexMatrix*, Complex*, ComplexMatrix*);
+void cmdivc(const ComplexMatrix*, const Complex*, ComplexMatrix*);
 
-void cmdivq(RealMatrix*, Quaternion*, QuaternionMatrix*);
+void cmdivq(const RealMatrix*, const Quaternion*, QuaternionMatrix*);
 
-void qmdivr(QuaternionMatrix*, double, QuaternionMatrix*);
+void qmdivr(const QuaternionMatrix*, const double, QuaternionMatrix*);
 
-void qmdivc(QuaternionMatrix*, Complex*, QuaternionMatrix*);
+void qmdivc(const QuaternionMatrix*, const Complex*, QuaternionMatrix*);
 
-void qmdivq(QuaternionMatrix*, Quaternion*, QuaternionMatrix*);
+void qmdivq(const QuaternionMatrix*, const Quaternion*, QuaternionMatrix*);
 
-void rmdivrm(RealMatrix*, RealMatrix*, RealMatrix*);
+void rmdivrm(const RealMatrix*, const RealMatrix*, RealMatrix*);
 
-void rmdivcm(RealMatrix*, ComplexMatrix*, RealMatrix*);
+void rmdivcm(const RealMatrix*, const ComplexMatrix*, RealMatrix*);
 
-void cmdivrm(ComplexMatrix*, RealMatrix*, ComplexMatrix*);
+void cmdivrm(const ComplexMatrix*, const RealMatrix*, ComplexMatrix*);
 
-void cmdivcm(ComplexMatrix*, ComplexMatrix*, ComplexMatrix*);
+void cmdivcm(const ComplexMatrix*, const ComplexMatrix*, ComplexMatrix*);
 
-void rmdivqm(RealMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void rmdivqm(const RealMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void qmdivrm(QuaternionMatrix*, RealMatrix*, QuaternionMatrix*);
+void qmdivrm(const QuaternionMatrix*, const RealMatrix*, QuaternionMatrix*);
 
-void cmdivqm(ComplexMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void cmdivqm(const ComplexMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-void qmdivcm(QuaternionMatrix*, ComplexMatrix*, QuaternionMatrix*);
+void qmdivcm(const QuaternionMatrix*, const ComplexMatrix*, QuaternionMatrix*);
 
-void qmdivqm(QuaternionMatrix*, QuaternionMatrix*, QuaternionMatrix*);
+void qmdivqm(const QuaternionMatrix*, const QuaternionMatrix*, QuaternionMatrix*);
 
-int rmeqrm(RealMatrix*, RealMatrix*, double);
+void rmneg(const RealMatrix*, RealMatrix*);
 
-int rmeqcm(RealMatrix*, ComplexMatrix*, double);
+void cmneg(const ComplexMatrix*, ComplexMatrix*);
 
-int cmeqrm(ComplexMatrix*, RealMatrix*, double);
+void qmneg(const QuaternionMatrix*, QuaternionMatrix*);
 
-int cmeqcm(ComplexMatrix*, ComplexMatrix*, double);
+int rmeqrm(const RealMatrix*, const RealMatrix*, const double);
 
-int rmeqqm(RealMatrix*, QuaternionMatrix*, double);
+int rmeqcm(const RealMatrix*, const ComplexMatrix*, const double);
 
-int qmeqrm(QuaternionMatrix*, RealMatrix*, double);
+int cmeqrm(const ComplexMatrix*, const RealMatrix*, const double);
 
-int cmeqqm(ComplexMatrix*, QuaternionMatrix*, double);
+int cmeqcm(const ComplexMatrix*, const ComplexMatrix*, const double);
 
-int qmeqcm(QuaternionMatrix*, ComplexMatrix*, double);
+int rmeqqm(const RealMatrix*, const QuaternionMatrix*, const double);
 
-int qmeqqm(QuaternionMatrix*, QuaternionMatrix*);
+int qmeqrm(const QuaternionMatrix*, const RealMatrix*, const double);
 
-void cmconj(ComplexMatrix*, ComplexMatrix*);
+int cmeqqm(const ComplexMatrix*, const QuaternionMatrix*, const double);
 
-void qmconj(QuaternionMatrix*, QuaternionMatrix*);
+int qmeqcm(const QuaternionMatrix*, const ComplexMatrix*, const double);
 
-void rmdet(RealMatrix*, double*);
+int qmeqqm(const QuaternionMatrix*, const QuaternionMatrix*, const double);
 
-void cmdet(ComplexMatrix*, Complex*);
+void cmconj(const ComplexMatrix*, ComplexMatrix*);
 
-void qmdet(QuaternionMatrix*, Quaternion*);
+void qmconj(const QuaternionMatrix*, QuaternionMatrix*);
 
-void rminv(RealMatrix*, RealMatrix*);
+void rmdet(const RealMatrix*, double*);
 
-void cminv(ComplexMatrix*, ComplexMatrix*);
+void cmdet(const ComplexMatrix*, Complex*);
 
-void qminv(QuaternionMatrix*, QuaternionMatrix*);
+void qmdet(const QuaternionMatrix*, Quaternion*);
 
-void rmtranspose(RealMatrix*, RealMatrix*);
+void rminv(const RealMatrix*, RealMatrix*);
 
-void cmtranspose(ComplexMatrix*, ComplexMatrix*);
+void cminv(const ComplexMatrix*, ComplexMatrix*);
 
-void qmtranspose(QuaternionMatrix*, QuaternionMatrix*);
+void qminv(const QuaternionMatrix*, QuaternionMatrix*);
+
+void rmtranspose(const RealMatrix*, RealMatrix*);
+
+void cmtranspose(const ComplexMatrix*, ComplexMatrix*);
+
+void qmtranspose(const QuaternionMatrix*, QuaternionMatrix*);
