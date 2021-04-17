@@ -18,7 +18,7 @@ void cplusr(const Complex* left, const double right, Complex* result) {
 
 void cplusc(const Complex* left, const Complex* right, Complex* result) {
     result->real = left->real + right->real;
-    result->imag0 = left->imag0 + left->imag0;
+    result->imag0 = left->imag0 + right->imag0;
 }
 
 void rplusq(const double left, const Quaternion* right, Quaternion* result) {
@@ -416,11 +416,11 @@ void sinc(const Complex* com, Complex* result) {
     Complex e;
     Complex f;
     Complex g = { 0, 2 };
-
-    negc(com, &a);
-    cmultc(com, &IMAG0, &b);
-    cmultc(&a, &IMAG0, &c);
-    expc(&b, &d);
+    
+    cmultc(&IMAG0, com, &a);
+    negc(&IMAG0, &b);
+    cmultc(&b, com, &c);
+    expc(&a, &d);
     expc(&c, &e);
     cminusc(&d, &e, &f);
     cdivc(&f, &g, result);
@@ -488,7 +488,7 @@ void tanhc(const Complex* com, Complex* result) {
 }
 
 void asinc(const Complex* com, Complex* result) {
-    Complex a = { M_PI / 2, 1 };
+    Complex a;
     Complex b;
     Complex c;
     Complex d;
@@ -496,6 +496,7 @@ void asinc(const Complex* com, Complex* result) {
     Complex f;
     Complex g;
 
+    negc(&IMAG0, &a);
     cmultc(com, com, &b);
     rminusc(1, &b, &c);
     sqrtc(&c, &d);
@@ -514,18 +515,18 @@ void acosc(const Complex* com, Complex* result) {
     Complex f;
     Complex g;
 
-    negc(com, &a);
-    cmultc(com, com, &b);
-    rminusc(1, &b, &c);
-    sqrtc(&c, &d);
-    cmultc(&IMAG0, com, &e);
-    cplusc(&e, &d, &f);
-    logc(&f, &g);
-    cmultc(&a, &g, result);
+    cmultc(com, com, &a);
+    rminusc(1, &a, &b);
+    sqrtc(&b, &c);
+    cmultc(&IMAG0, com, &d);
+    cplusc(&c, &d, &e);
+    logc(&e, &f);
+    cmultc(&IMAG0, &f, &g);
+    rplusc(M_PI_2, &g, result);
 }
 
 void atanc(const Complex* com, Complex* result) {
-    Complex a = { 0, 0.5 };
+    Complex a;
     Complex b;
     Complex c;
     Complex d;
@@ -533,13 +534,14 @@ void atanc(const Complex* com, Complex* result) {
     Complex f;
     Complex g;
 
-    cmultc(&IMAG0, com, &b);
-    rplusc(1, &b, &c);
-    rminusc(1, &b, &d);
+    cmultc(&IMAG0, com, &a);
+    rminusc(1, &a, &b);
+    rplusc(1, &a, &c);
+    logc(&b, &d);
     logc(&c, &e);
-    logc(&d, &f);
-    cminusc(&e, &f, &g);
-    cmultc(&a, &g, result);
+    cminusc(&d, &e, &f);
+    cmultc(&IMAG0, &f, &g);
+    cdivr(&g, 2, result);
 }
 
 void asinhc(const Complex* com, Complex* result) {
