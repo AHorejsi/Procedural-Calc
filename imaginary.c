@@ -333,23 +333,41 @@ void negq(const Quaternion* quat, Quaternion* result) {
     result->imag2 = -quat->imag2;
 }
 
-bool reqr(const double, const double, const double);
+bool reqr(const double left, const double right, const double range) {
+    return abs(left - right) <= range;
+}
 
-bool reqc(const double, const Complex*, const double);
+bool reqc(const double left, const Complex* right, const double range) {
+    return ceqr(right, left, range);
+}
 
-bool ceqr(const Complex*, const double, const double);
+bool ceqr(const Complex* left, const double right, const double range) {
+    return abs(left->real - right) <= range && abs(left->imag0) <= range;
+}
 
-bool ceqc(const Complex*, const Complex*, const double);
+bool ceqc(const Complex* left, const Complex* right, const double range) {
+    return abs(left->real - right->real) <= range && abs(left->imag0 - right->imag0) <= range;
+}
 
-bool reqq(const double, const Quaternion*, const double);
+bool reqq(const double left, const Quaternion* right, const double range) {
+    return qeqr(right, left, range);
+}
 
-bool qeqr(const Quaternion*, const double, const double);
+bool qeqr(const Quaternion* left, const double right, const double range) {
+    return abs(left->real - right) <= range && abs(left->imag0) <= range && abs(left->imag1) <= range && abs(left->imag2) <= range;
+}
 
-bool ceqq(const Complex*, const Quaternion*, const double);
+bool ceqq(const Complex* left, const Quaternion* right, const double range) {
+    return qeqc(right, left, range);
+}
 
-bool qeqc(const Quaternion*, const Complex*, const double);
+bool qeqc(const Quaternion* left, const Complex* right, const double range) {
+    return abs(left->real - right->real) <= range && abs(left->imag0 - right->imag0) <= range && abs(left->imag1) <= range && abs(left->imag2) <= range;
+}
 
-bool qeqq(const Quaternion*, const Quaternion*, const double);
+bool qeqq(const Quaternion* left, const Quaternion* right, const double range) {
+    return abs(left->real - right->real) <= range && abs(left->imag0 - right->imag0) <= range && abs(left->imag1 - right->imag1) <= range && abs(left->imag2 - right->imag2) <= range;
+}
 
 void conjc(const Complex* com, Complex* result) {
     result->real = com->real;
