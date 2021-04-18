@@ -202,7 +202,7 @@ void qdivr(const Quaternion* left, const double right, Quaternion* result) {
 }
 
 void cdivq(const Complex* left, const Quaternion* right, Quaternion* result) {
-    double denominator = absq(right);
+    double denominator = right->real * right->real + right->imag0 * right->imag0 + right->imag1 * right->imag1 + right->imag2 * right->imag2;
 
     double realResult = (left->real * right->real + left->imag0 * right->imag0) / denominator;
     double imag0Result = (left->imag0 * right->real - left->real * right->imag0) / denominator;
@@ -227,7 +227,7 @@ void qdivc(const Quaternion* left, const Complex* right, Quaternion* result) {
 }
 
 void qdivq(const Quaternion* left, const Quaternion* right, Quaternion* result) {
-    double denominator = absq(right);
+    double denominator = right->real * right->real + right->imag0 * right->imag0 + right->imag1 * right->imag1 + right->imag2 * right->imag2;
 
     double realResult = (left->real * right->real + left->imag0 * right->imag0 + left->imag1 * right->imag1 + left->imag2 * right->imag2) / denominator;
     double imag0Result = (left->real * right->imag0 - left->imag0 * right->real - left->imag1 * right->imag2 + left->imag2 * right->imag1) / denominator;
@@ -412,10 +412,10 @@ void invq(const Quaternion* quat, Quaternion* result) {
 double argc(const Complex* com) {
     if (0 == com->real) {
         if (com->imag0 < 0) {
-            return -M_PI / 2;
+            return -M_PI_2;
         }
         else if (com->imag0 > 0) {
-            return M_PI / 2;
+            return M_PI_2;
         }
         else {
             return NAN;
