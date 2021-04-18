@@ -263,7 +263,7 @@ void cpowc(const Complex* left, const Complex* right, Complex* result) {
         result->imag0 = 0;
     }
     else if (rightIsZero) {
-        result->real - 1;
+        result->real = 1;
         result->imag0 = 0;
     }
     else {
@@ -279,10 +279,8 @@ void cpowc(const Complex* left, const Complex* right, Complex* result) {
 }
 
 void rpowq(const double left, const Quaternion* right, Quaternion* result) {
-    Quaternion a;
-
-    rmultq(log(left), right, &a);
-    expq(&a, result);
+    rmultq(log(left), right, result);
+    expq(result, result);
 }
 
 void qpowr(const Quaternion* left, const double right, Quaternion* result) {
@@ -334,7 +332,7 @@ void negq(const Quaternion* quat, Quaternion* result) {
 }
 
 bool reqr(const double left, const double right, const double range) {
-    return abs(left - right) <= range;
+    return fabs(left - right) <= range;
 }
 
 bool reqc(const double left, const Complex* right, const double range) {
@@ -342,11 +340,11 @@ bool reqc(const double left, const Complex* right, const double range) {
 }
 
 bool ceqr(const Complex* left, const double right, const double range) {
-    return abs(left->real - right) <= range && abs(left->imag0) <= range;
+    return fabs(left->real - right) <= range && fabs(left->imag0) <= range;
 }
 
 bool ceqc(const Complex* left, const Complex* right, const double range) {
-    return abs(left->real - right->real) <= range && abs(left->imag0 - right->imag0) <= range;
+    return fabs(left->real - right->real) <= range && fabs(left->imag0 - right->imag0) <= range;
 }
 
 bool reqq(const double left, const Quaternion* right, const double range) {
@@ -354,7 +352,7 @@ bool reqq(const double left, const Quaternion* right, const double range) {
 }
 
 bool qeqr(const Quaternion* left, const double right, const double range) {
-    return abs(left->real - right) <= range && abs(left->imag0) <= range && abs(left->imag1) <= range && abs(left->imag2) <= range;
+    return fabs(left->real - right) <= range && fabs(left->imag0) <= range && fabs(left->imag1) <= range && fabs(left->imag2) <= range;
 }
 
 bool ceqq(const Complex* left, const Quaternion* right, const double range) {
@@ -362,11 +360,11 @@ bool ceqq(const Complex* left, const Quaternion* right, const double range) {
 }
 
 bool qeqc(const Quaternion* left, const Complex* right, const double range) {
-    return abs(left->real - right->real) <= range && abs(left->imag0 - right->imag0) <= range && abs(left->imag1) <= range && abs(left->imag2) <= range;
+    return fabs(left->real - right->real) <= range && fabs(left->imag0 - right->imag0) <= range && fabs(left->imag1) <= range && fabs(left->imag2) <= range;
 }
 
 bool qeqq(const Quaternion* left, const Quaternion* right, const double range) {
-    return abs(left->real - right->real) <= range && abs(left->imag0 - right->imag0) <= range && abs(left->imag1 - right->imag1) <= range && abs(left->imag2 - right->imag2) <= range;
+    return fabs(left->real - right->real) <= range && fabs(left->imag0 - right->imag0) <= range && fabs(left->imag1 - right->imag1) <= range && fabs(left->imag2 - right->imag2) <= range;
 }
 
 void conjc(const Complex* com, Complex* result) {
