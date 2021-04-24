@@ -1,9 +1,11 @@
-typedef struct complex_t {
+#include <stdbool.h>
+
+typedef struct complex {
     double real;
     double imag0;
 } Complex;
 
-typedef struct quaternion_t {
+typedef struct quaternion {
     double real;
     double imag0;
     double imag1;
@@ -94,70 +96,82 @@ void qpowc(const Quaternion*, const Complex*, Quaternion*);
 
 void qpowq(const Quaternion*, const Quaternion*, Quaternion*);
 
-void cneg(const Complex*, Complex*);
+void negc(const Complex*, Complex*);
 
-void qneg(const Quaternion*, Quaternion*);
+void negq(const Quaternion*, Quaternion*);
 
-int reqc(const double, const Complex*, const double);
+bool reqr(const double, const double, const double);
 
-int ceqr(const Complex*, const double, const double);
+bool reqc(const double, const Complex*, const double);
 
-int ceqc(const Complex*, const Complex*, const double);
+bool ceqr(const Complex*, const double, const double);
 
-int reqq(const double, const Quaternion*, const double);
+bool ceqc(const Complex*, const Complex*, const double);
 
-int qeqr(const Quaternion*, const double, const double);
+bool reqq(const double, const Quaternion*, const double);
 
-int ceqq(const Complex*, const Quaternion*, const double);
+bool qeqr(const Quaternion*, const double, const double);
 
-int qeqc(const Quaternion*, const Complex*, const double);
+bool ceqq(const Complex*, const Quaternion*, const double);
 
-int qeqq(const Quaternion*, const Quaternion*, const double);
+bool qeqc(const Quaternion*, const Complex*, const double);
 
-void cconj(const Complex*, Complex*);
+bool qeqq(const Quaternion*, const Quaternion*, const double);
 
-void qconj(const Quaternion*, Quaternion*);
+void conjc(const Complex*, Complex*);
 
-void cnorm(const Complex*, Complex*);
+void conjq(const Quaternion*, Quaternion*);
 
-void qnorm(const Quaternion*, Quaternion*);
+void normc(const Complex*, Complex*);
 
-void cabs(const Complex*, double*);
+void normq(const Quaternion*, Quaternion*);
 
-void qabs(const Quaternion*, double*);
+double absc(const Complex*);
 
-void csin(const Complex*, Complex*);
+double absq(const Quaternion*);
 
-void ccos(const Complex*, Complex*);
+void invc(const Complex*, Complex*);
 
-void ctan(const Complex*, Complex*);
+void invq(const Quaternion*, Quaternion*);
 
-void csinh(const Complex*, Complex*);
+double argc(const Complex*);
 
-void ccosh(const Complex*, Complex*);
+void sinc(const Complex*, Complex*);
 
-void ctanh(const Complex*, Complex*);
+void cosc(const Complex*, Complex*);
 
-void casin(const Complex*, Complex*);
+void tanc(const Complex*, Complex*);
 
-void cacos(const Complex*, Complex*);
+void sinhc(const Complex*, Complex*);
 
-void catan(const Complex*, Complex*);
+void coshc(const Complex*, Complex*);
 
-void casinh(const Complex*, Complex*);
+void tanhc(const Complex*, Complex*);
 
-void cacosh(const Complex*, Complex*);
+void asinc(const Complex*, Complex*);
 
-void catanh(const Complex*, Complex*);
+void acosc(const Complex*, Complex*);
 
-void clog(const Complex*, Complex*);
+void atanc(const Complex*, Complex*);
 
-void qlog(const Quaternion*, Quaternion*);
+void asinhc(const Complex*, Complex*);
 
-void clog10(const Complex*, Complex*);
+void acoshc(const Complex*, Complex*);
 
-void qlog10(const Quaternion*, Quaternion*);
+void atanhc(const Complex*, Complex*);
 
-void cexp(const Complex*, Complex*);
+void sqrtc(const Complex*, Complex*);
 
-void qexp(const Quaternion*, Quaternion*);
+void sqrtq(const Quaternion*, Quaternion*);
+
+void logc(const Complex*, Complex*);
+
+void logq(const Quaternion*, Quaternion*);
+
+void log10c(const Complex*, Complex*);
+
+void log10q(const Quaternion*, Quaternion*);
+
+void expc(const Complex*, Complex*);
+
+void expq(const Quaternion*, Quaternion*);
