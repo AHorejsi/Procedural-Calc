@@ -90,15 +90,7 @@ void vdivr(const Vector* left, const double right, Vector* result) {
 }
 
 void negv(const Vector* vec, Vector* result) {
-    double* position = (double*)malloc(vec->dimensions * sizeof(double));
-
-    for (size_t index = 0; index < vec->dimensions; ++index) {
-        position[index] = -vec->position[index];
-    }
-
-    free(result->position);
-    result->position = position;
-    result->dimensions = vec->dimensions;
+    vmultr(vec, -1, result);
 }
 
 bool veqv(const Vector* left, const Vector* right, const double range) {
@@ -129,7 +121,7 @@ void normv(const Vector* vec, Vector* result) {
     vdivr(vec, absv(vec), result);
 }
 
-bool angle(const Vector* left, const Vector* right, double* result) {
+bool anglev(const Vector* left, const Vector* right, double* result) {
     double dotProduct;
     
     if (vdotv(left, right, &dotProduct)) {
@@ -142,7 +134,7 @@ bool angle(const Vector* left, const Vector* right, double* result) {
     }
 }
 
-bool dist(const Vector* left, const Vector* right, double* result) {
+bool vdistv(const Vector* left, const Vector* right, double* result) {
     if (left->dimensions != right->dimensions) {
         return false;
     }

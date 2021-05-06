@@ -28,6 +28,6 @@ double absv(const Vector*);
 
 void normv(const Vector*, Vector*);
 
-bool angle(const Vector*, const Vector*, double*);
+bool anglev(const Vector*, const Vector*, double*);
 
-bool dist(const Vector*, const Vector*, double*);
+bool vdistv(const Vector*, const Vector*, double*);
