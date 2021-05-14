@@ -1,7 +1,7 @@
 #include <stddef.h>
 #include <stdbool.h>
 
-typedef struct number_list {
+typedef struct real_list {
     double* values;
     size_t size;
 } NumberList;
