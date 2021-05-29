@@ -1,57 +1,59 @@
 #include <stddef.h>
 #include <stdbool.h>
 
-typedef struct real_list {
+typedef struct number_list {
     double* values;
     size_t size;
-} NumberList;
+} number_list_t;
 
-void rplusl(const double, const NumberList*, NumberList*);
+void rplusl(const double, const number_list_t*, number_list_t*);
 
-void lplusr(const NumberList*, const double, NumberList*);
+void lplusr(const number_list_t*, const double, number_list_t*);
 
-bool lplusl(const NumberList*, const NumberList*, NumberList*);
+bool lplusl(const number_list_t*, const number_list_t*, number_list_t*);
 
-void rminusl(const double, const NumberList*, NumberList*);
+void rminusl(const double, const number_list_t*, number_list_t*);
 
-void lminusr(const NumberList*, const double, NumberList*);
+void lminusr(const number_list_t*, const double, number_list_t*);
 
-bool lminusl(const NumberList*, const NumberList*, NumberList*);
+bool lminusl(const number_list_t*, const number_list_t*, number_list_t*);
 
-void rmultl(const double, const NumberList*, NumberList*);
+void rmultl(const double, const number_list_t*, number_list_t*);
 
-void lmultr(const NumberList*, const double, NumberList*);
+void lmultr(const number_list_t*, const double, number_list_t*);
 
-bool lmultl(const NumberList*, const NumberList*, NumberList*);
+bool lmultl(const number_list_t*, const number_list_t*, number_list_t*);
 
-void rdivl(const double, const NumberList*, NumberList*);
+void rdivl(const double, const number_list_t*, number_list_t*);
 
-void ldivr(const NumberList*, const double, NumberList*);
+void ldivr(const number_list_t*, const double, number_list_t*);
 
-bool ldivl(const NumberList*, const NumberList*, NumberList*);
+bool ldivl(const number_list_t*, const number_list_t*, number_list_t*);
 
-void negl(const NumberList*, NumberList*);
+void negl(const number_list_t*, number_list_t*);
 
-bool leql(const NumberList*, const NumberList*, const double);
+bool leql(const number_list_t*, const number_list_t*, const double);
 
-double minl(const NumberList*);
+double minl(const number_list_t*);
 
-double maxl(const NumberList*);
+double maxl(const number_list_t*);
 
-double suml(const NumberList*);
+double suml(const number_list_t*);
 
-double prodl(const NumberList*);
+double prodl(const number_list_t*);
 
-double meanl(const NumberList*);
+double meanl(const number_list_t*);
 
-double medianl(const NumberList*);
+double medianl(const number_list_t*);
 
-void model(const NumberList*, const double, NumberList*);
+void model(const number_list_t*, const double, number_list_t*);
 
-double rangel(const NumberList*);
+double rangel(const number_list_t*);
 
-double midrangel(const NumberList*);
+double midrangel(const number_list_t*);
 
-double variancel(const NumberList*);
+double variancel(const number_list_t*);
 
-double stddevl(const NumberList*);
+double stddevl(const number_list_t*);
+
+bool subl(const number_list_t*, const size_t, const size_t, number_list_t*);

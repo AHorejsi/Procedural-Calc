@@ -1,8 +1,5 @@
 #define _USE_MATH_DEFINES
 
-#include "stdio.h"
-
-
 #include <math.h>
 #include <float.h>
 #include <string.h>
@@ -10,161 +7,285 @@
 #include "number_list.h"
 #include "imaginary.h"
 
-void rplusl(const double left, const NumberList* right, NumberList* result) {
+void rplusl(const double left, const number_list_t* right, number_list_t* result) {
     lplusr(right, left, result);
 }
 
-void lplusr(const NumberList* left, const double right, NumberList* result) {
-    double* values = (double*)malloc(left->size * sizeof(double));
-
-    for (size_t index = 0; index < left->size; ++index) {
-        values[index] = left->values[index] + right;
+void _lplusr_in_place(const double value, number_list_t* result) {
+    for (size_t index = 0; index < result->size; ++index) {
+        result->values[index] += value;
     }
-
-    free(result->values);
-    result->values = values;
-    result->size = left->size;
 }
 
-bool lplusl(const NumberList* left, const NumberList* right, NumberList* result) {
+void lplusr(const number_list_t* left, const double right, number_list_t* result) {
+    if (left == result) {
+        _lplusr_in_place(right, result);
+    }
+    else {
+        double* values = (double*)malloc(left->size * sizeof(double));
+
+        for (size_t index = 0; index < left->size; ++index) {
+            values[index] = left->values[index] + right;
+        }
+
+        free(result->values);
+        result->values = values;
+        result->size = left->size;
+    }
+}
+
+void _lplusl_in_place(const number_list_t* other, number_list_t* result) {
+    for (size_t index = 0; index < other->size; ++index) {
+        result->values[index] += other->values[index];
+    }
+}
+
+bool lplusl(const number_list_t* left, const number_list_t* right, number_list_t* result) {
     if (left->size != right->size) {
         return false;
     }
 
-    double* values = (double*)malloc(left->size * sizeof(double));
-
-    for (size_t index = 0; index < left->size; ++index) {
-        values[index] = left->values[index] + right->values[index];
+    if (left == result) {
+        _lplusl_in_place(right, result);
     }
+    else if (right == result) {
+        _lplusl_in_place(left, result);
+    }
+    else {
+        double* values = (double*)malloc(left->size * sizeof(double));
 
-    free(result->values);
-    result->values = values;
-    result->size = left->size;
+        for (size_t index = 0; index < left->size; ++index) {
+            values[index] = left->values[index] + right->values[index];
+        }
+
+        free(result->values);
+        result->values = values;
+        result->size = left->size;
+    }
 
     return true;
 }
 
-void rminusl(const double left, const NumberList* right, NumberList* result) {
-    double* values = (double*)malloc(right->size * sizeof(double));
-
-    for (size_t index = 0; index < right->size; ++index) {
-        values[index] = left - right->values[index];
+void _rminusl_in_place(const double value, number_list_t* result) {
+    for (size_t index = 0; index < result->size; ++index) {
+        result->values[index] = value - result->values[index];
     }
-
-    free(result->values);
-    result->values = values;
-    result->size = right->size;
 }
 
-void lminusr(const NumberList* left, const double right, NumberList* result) {
-    double* values = (double*)malloc(left->size * sizeof(double));
-
-    for (size_t index = 0; index < left->size; ++index) {
-        values[index] = left->values[index] - right;
+void rminusl(const double left, const number_list_t* right, number_list_t* result) {
+    if (right == result) {
+        _rminusl_in_place(left, result);
     }
+    else {
+        double* values = (double*)malloc(right->size * sizeof(double));
 
-    free(result->values);
-    result->values = values;
-    result->size = left->size;
+        for (size_t index = 0; index < right->size; ++index) {
+            values[index] = left - right->values[index];
+        }
+
+        free(result->values);
+        result->values = values;
+        result->size = right->size;
+    }
 }
 
-bool lminusl(const NumberList* left, const NumberList* right, NumberList* result) {
+void _lminusr_in_place(const double value, number_list_t* result) {
+    for (size_t index = 0; index < result->size; ++index) {
+        result->values[index] -= value;
+    }
+}
+
+void lminusr(const number_list_t* left, const double right, number_list_t* result) {
+    if (left == result) {
+        _lminusr_in_place(right, result);
+    }
+    else {
+        double* values = (double*)malloc(left->size * sizeof(double));
+
+        for (size_t index = 0; index < left->size; ++index) {
+            values[index] = left->values[index] - right;
+        }
+
+        free(result->values);
+        result->values = values;
+        result->size = left->size;
+    }
+}
+
+void _lminusl_in_place(const number_list_t* other, number_list_t* result) {
+    for (size_t index = 0; index < other->size; ++index) {
+        result->values[index] -= other->values[index];
+    }
+}
+
+bool lminusl(const number_list_t* left, const number_list_t* right, number_list_t* result) {
     if (left->size != right->size) {
         return false;
     }
 
-    double* values = (double*)malloc(left->size * sizeof(double));
-
-    for (size_t index = 0; index < left->size; ++index) {
-        values[index] = left->values[index] - right->values[index];
+    if (left == result) {
+        _lminusl_in_place(right, result);
     }
+    else if (right == result) {
+        _lminusl_in_place(left, result);
+    }
+    else {
+        double* values = (double*)malloc(left->size * sizeof(double));
 
-    free(result->values);
-    result->values = values;
-    result->size = left->size;
+        for (size_t index = 0; index < left->size; ++index) {
+            values[index] = left->values[index] - right->values[index];
+        }
+
+        free(result->values);
+        result->values = values;
+        result->size = left->size;
+    }
 
     return true;
 }
 
-void rmultl(const double left, const NumberList* right, NumberList* result) {
+void rmultl(const double left, const number_list_t* right, number_list_t* result) {
     lmultr(right, left, result);
 }
 
-void lmultr(const NumberList* left, const double right, NumberList* result) {
-    double* values = (double*)malloc(left->size * sizeof(double));
-
-    for (size_t index = 0; index < left->size; ++index) {
-        values[index] = left->values[index] * right;
+void _lmultr_in_place(const double value, number_list_t* result) {
+    for (size_t index = 0; index < result->size; ++index) {
+        result->values[index] *= value;
     }
-
-    free(result->values);
-    result->values = values;
-    result->size = left->size;
 }
 
-bool lmultl(const NumberList* left, const NumberList* right, NumberList* result) {
+void lmultr(const number_list_t* left, const double right, number_list_t* result) {
+    if (left == result) {
+        _lmultr_in_place(right, result);
+    }
+    else {
+        double* values = (double*)malloc(left->size * sizeof(double));
+
+        for (size_t index = 0; index < left->size; ++index) {
+            values[index] = left->values[index] * right;
+        }
+
+        free(result->values);
+        result->values = values;
+        result->size = left->size;
+    }
+}
+
+void _lmultl_in_place(const number_list_t* other, number_list_t* result) {
+    for (size_t index = 0; index < other->size; ++index) {
+        result->values[index] *= other->values[index];
+    }
+}
+
+bool lmultl(const number_list_t* left, const number_list_t* right, number_list_t* result) {
     if (left->size != right->size) {
         return false;
     }
 
-    double* values = (double*)malloc(left->size * sizeof(double));
-
-    for (size_t index = 0; index < left->size; ++index) {
-        values[index] = left->values[index] * right->values[index];
+    if (left == result) {
+        _lmultl_in_place(right, result);
     }
+    else if (right == result) {
+        _lmultl_in_place(left, result);
+    }
+    else {
+        double* values = (double*)malloc(left->size * sizeof(double));
 
-    free(result->values);
-    result->values = values;
-    result->size = left->size;
+        for (size_t index = 0; index < left->size; ++index) {
+            values[index] = left->values[index] * right->values[index];
+        }
+
+        free(result->values);
+        result->values = values;
+        result->size = left->size;
+    }
 
     return true;
 }
 
-void rdivl(const double left, const NumberList* right, NumberList* result) {
-    double* values = (double*)malloc(right->size * sizeof(double));
-
-    for (size_t index = 0; index < right->size; ++index) {
-        values[index] = left / right->values[index];
+void _rdivl_in_place(const double value, number_list_t* result) {
+    for (size_t index = 0; index < result->size; ++index) {
+        result->values[index] = value / result->values[index];
     }
-
-    free(result->values);
-    result->values = values;
-    result->size = right->size;
 }
 
-void ldivr(const NumberList* left, const double right, NumberList* result) {
-    double* values = (double*)malloc(left->size * sizeof(double));
-
-    for (size_t index = 0; index < left->size; ++index) {
-        values[index] = left->values[index] / right;
+void rdivl(const double left, const number_list_t* right, number_list_t* result) {
+    if (right == result) {
+        _rdivl_in_place(left, result);
     }
+    else {
+        double* values = (double*)malloc(right->size * sizeof(double));
 
-    free(result->values);
+        for (size_t index = 0; index < right->size; ++index) {
+            values[index] = left / right->values[index];
+        }
+
+        free(result->values);
+        result->values = values;
+        result->size = right->size;
+    }
 }
 
-bool ldivl(const NumberList* left, const NumberList* right, NumberList* result) {
+void _ldivr_in_place(const double value, number_list_t* result) {
+    for (size_t index = 0; index < result->size; ++index) {
+        result->values[index] /= value;
+    }
+}
+
+void ldivr(const number_list_t* left, const double right, number_list_t* result) {
+    if (left == result) {
+        _ldivr_in_place(right, result);
+    }
+    else {
+        double* values = (double*)malloc(left->size * sizeof(double));
+
+        for (size_t index = 0; index < left->size; ++index) {
+            values[index] = left->values[index] / right;
+        }
+
+        free(result->values);
+        result->values = values;
+        result->size = left->size;
+    }
+}
+
+void _ldivl_in_place(const number_list_t* other, number_list_t* result) {
+    for (size_t index = 0; index < other->size; ++index) {
+        result->values[index] /= other->values[index];
+    }
+}
+
+bool ldivl(const number_list_t* left, const number_list_t* right, number_list_t* result) {
     if (left->size != right->size) {
         return false;
     }
 
-    double* values = (double*)malloc(left->size * sizeof(double));
-
-    for (size_t index = 0; index < left->size; ++index) {
-        values[index] = left->values[index] / right->values[index];
+    if (left == result) {
+        _ldivl_in_place(right, result);
     }
+    else if (right == result) {
+        _ldivl_in_place(left, result);
+    }
+    else {
+        double* values = (double*)malloc(left->size * sizeof(double));
 
-    free(result->values);
-    result->values = values;
-    result->size = left->size;
+        for (size_t index = 0; index < left->size; ++index) {
+            values[index] = left->values[index] / right->values[index];
+        }
+
+        free(result->values);
+        result->values = values;
+        result->size = left->size;
+    }
 
     return true;
 }
 
-void negl(const NumberList* list, NumberList* result) {
+void negl(const number_list_t* list, number_list_t* result) {
     lmultr(list, -1, result);
 }
 
-bool leql(const NumberList* left, const NumberList* right, const double range) {
+bool leql(const number_list_t* left, const number_list_t* right, const double range) {
     if (left->size != right->size) {
         return false;
     }
@@ -178,7 +299,7 @@ bool leql(const NumberList* left, const NumberList* right, const double range) {
     return true;
 }
 
-double minl(const NumberList* list) {
+double minl(const number_list_t* list) {
     double minValue = DBL_MAX;
 
     for (size_t index = 0; index < list->size; ++index) {
@@ -190,7 +311,7 @@ double minl(const NumberList* list) {
     return minValue;
 }
 
-double maxl(const NumberList* list) {
+double maxl(const number_list_t* list) {
     double maxValue = -DBL_MAX;
 
     for (size_t index = 0; index < list->size; ++index) {
@@ -202,7 +323,7 @@ double maxl(const NumberList* list) {
     return maxValue;
 }
 
-double suml(const NumberList* list) {
+double suml(const number_list_t* list) {
     double result = 0;
 
     for (size_t index = 0; index < list->size; ++index) {
@@ -212,7 +333,7 @@ double suml(const NumberList* list) {
     return result;
 }
 
-double prodl(const NumberList* list) {
+double prodl(const number_list_t* list) {
     if (0 == list->size) {
         return 0;
     }
@@ -226,7 +347,7 @@ double prodl(const NumberList* list) {
     return result;
 }
 
-double meanl(const NumberList* list) {
+double meanl(const number_list_t* list) {
     return suml(list) / list->size;
 }
 
@@ -268,7 +389,7 @@ double _quick_select(double* arr, size_t low, size_t high, size_t index) {
     }
 }
 
-double medianl(const NumberList* list) {
+double medianl(const number_list_t* list) {
     size_t byteSize = list->size * sizeof(double);
     double* copyArr = (double*)malloc(byteSize);
     memcpy(copyArr, list->values, byteSize);
@@ -304,7 +425,7 @@ int _compare(const void* left, const void* right) {
     }
 }
 
-void _make_number_list_from_mode(double* values, size_t size, NumberList* result) {
+void _make_number_list_from_mode(double* values, size_t size, number_list_t* result) {
     double byteSize = size * sizeof(double);
     double* resultValues = (double*)malloc(byteSize);
     memcpy(resultValues, values, byteSize);
@@ -316,7 +437,7 @@ void _make_number_list_from_mode(double* values, size_t size, NumberList* result
     result->size = size;
 }
 
-void model(const NumberList* list, const double range, NumberList* result) {
+void model(const number_list_t* list, const double range, number_list_t* result) {
     size_t sizeOfDouble = sizeof(double);
     size_t byteSize = list->size * sizeOfDouble;
     double* copyArr = (double*)malloc(byteSize);
@@ -358,15 +479,15 @@ void model(const NumberList* list, const double range, NumberList* result) {
     _make_number_list_from_mode(mode, modeIndex, result);
 }
 
-double rangel(const NumberList* list) {
+double rangel(const number_list_t* list) {
     return maxl(list) - minl(list);
 }
 
-double midrangel(const NumberList* list) {
+double midrangel(const number_list_t* list) {
     return (maxl(list) + minl(list)) / 2;
 }
 
-double variancel(const NumberList* list) {
+double variancel(const number_list_t* list) {
     double result = 0;
     
     double meanValue = meanl(list);
@@ -378,6 +499,26 @@ double variancel(const NumberList* list) {
     return result / (list->size - 1);
 }
 
-double stddevl(const NumberList* list) {
+double stddevl(const number_list_t* list) {
     return sqrt(variancel(list));
+}
+
+bool subl(const number_list_t* list, const size_t startIndex, const size_t endIndex, number_list_t* result) {
+    if (startIndex < 0 || startIndex >= list->size) {
+        return false;
+    }
+    if (endIndex < 0 || endIndex > list->size) {
+        return false;
+    }
+
+    size_t size = endIndex - startIndex;
+    size_t byteSize = size * sizeof(double);
+    double* values = (double*)malloc(byteSize);
+    memcpy(values, list->values + startIndex, byteSize);
+
+    free(result->values);
+    result->values = values;
+    result->size = size;
+
+    return true;
 }

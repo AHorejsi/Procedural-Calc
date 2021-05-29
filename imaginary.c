@@ -3,113 +3,113 @@
 #include <math.h>
 #include "imaginary.h"
 
-const Complex IMAG0 = { 0, 1 };
-const Quaternion IMAG1 = { 0, 0, 1, 0 };
-const Quaternion IMAG2 = { 0, 0, 0, 1 };
+const complex_t IMAG0 = { 0, 1 };
+const quaternion_t IMAG1 = { 0, 0, 1, 0 };
+const quaternion_t IMAG2 = { 0, 0, 0, 1 };
 
-void rplusc(const double left, const Complex* right, Complex* result) {
+void rplusc(const double left, const complex_t* right, complex_t* result) {
     cplusr(right, left, result);
 }
 
-void cplusr(const Complex* left, const double right, Complex* result) {
+void cplusr(const complex_t* left, const double right, complex_t* result) {
     result->real = left->real + right;
     result->imag0 = left->imag0;
 }
 
-void cplusc(const Complex* left, const Complex* right, Complex* result) {
+void cplusc(const complex_t* left, const complex_t* right, complex_t* result) {
     result->real = left->real + right->real;
     result->imag0 = left->imag0 + right->imag0;
 }
 
-void rplusq(const double left, const Quaternion* right, Quaternion* result) {
+void rplusq(const double left, const quaternion_t* right, quaternion_t* result) {
     qplusr(right, left, result);
 }
 
-void qplusr(const Quaternion* left, const double right, Quaternion* result) {
+void qplusr(const quaternion_t* left, const double right, quaternion_t* result) {
     result->real = left->real + right;
     result->imag0 = left->imag0;
     result->imag1 = left->imag1;
     result->imag2 = left->imag2;
 }
 
-void cplusq(const Complex* left, const Quaternion* right, Quaternion* result) {
+void cplusq(const complex_t* left, const quaternion_t* right, quaternion_t* result) {
     qplusc(right, left, result);
 }
 
-void qplusc(const Quaternion* left, const Complex* right, Quaternion* result) {
+void qplusc(const quaternion_t* left, const complex_t* right, quaternion_t* result) {
     result->real = left->real + right->real;
     result->imag0 = left->imag0 + right->imag0;
     result->imag1 = left->imag1;
     result->imag2 = left->imag2;
 }
 
-void qplusq(const Quaternion* left, const Quaternion* right, Quaternion* result) {
+void qplusq(const quaternion_t* left, const quaternion_t* right, quaternion_t* result) {
     result->real = left->real + right->real;
     result->imag0 = left->imag0 + right->imag0;
     result->imag1 = left->imag1 + right->imag1;
     result->imag2 = left->imag2 + right->imag2;
 }
 
-void rminusc(const double left, const Complex* right, Complex* result) {
+void rminusc(const double left, const complex_t* right, complex_t* result) {
     result->real = left - right->real;
     result->imag0 = -right->imag0;
 }
 
-void cminusr(const Complex* left, const double right, Complex* result) {
+void cminusr(const complex_t* left, const double right, complex_t* result) {
     result->real = left->real - right;
     result->imag0 = left->imag0;
 }
 
-void cminusc(const Complex* left, const Complex* right, Complex* result) {
+void cminusc(const complex_t* left, const complex_t* right, complex_t* result) {
     result->real = left->real - right->real;
     result->imag0 = left->imag0 - right->imag0;
 }
 
-void rminusq(const double left, const Quaternion* right, Quaternion* result) {
+void rminusq(const double left, const quaternion_t* right, quaternion_t* result) {
     result->real = left - right->real;
     result->imag0 = -right->imag0;
     result->imag1 = -right->imag1;
     result->imag2 = -right->imag2;
 }
 
-void qminusr(const Quaternion* left, const double right, Quaternion* result) {
+void qminusr(const quaternion_t* left, const double right, quaternion_t* result) {
     result->real = left->real - right;
     result->imag0 = left->imag0;
     result->imag1 = left->imag1;
     result->imag2 = left->imag2;
 }
 
-void cminusq(const Complex* left, const Quaternion* right, Quaternion* result) {
+void cminusq(const complex_t* left, const quaternion_t* right, quaternion_t* result) {
     result->real = left->real - right->real;
     result->imag0 = left->imag0 - right->imag0;
     result->imag1 = -right->imag1;
     result->imag2 = -right->imag2;
 }
 
-void qminusc(const Quaternion* left, const Complex* right, Quaternion* result) {
+void qminusc(const quaternion_t* left, const complex_t* right, quaternion_t* result) {
     result->real = left->real - right->real;
     result->imag0 = left->imag0 - right->imag0;
     result->imag1 = left->imag1;
     result->imag2 = left->imag2;
 }
 
-void qminusq(const Quaternion* left, const Quaternion* right, Quaternion* result) {
+void qminusq(const quaternion_t* left, const quaternion_t* right, quaternion_t* result) {
     result->real = left->real - right->real;
     result->imag0 = left->imag0 - right->imag0;
     result->imag1 = left->imag1 - right->imag1;
     result->imag2 = left->imag2 - right->imag2;
 }
 
-void rmultc(const double left, const Complex* right, Complex* result) {
+void rmultc(const double left, const complex_t* right, complex_t* result) {
     cmultr(right, left, result);
 }
 
-void cmultr(const Complex* left, const double right, Complex* result) {
+void cmultr(const complex_t* left, const double right, complex_t* result) {
     result->real = left->real * right;
     result->imag0 = left->imag0 * right;
 }
 
-void cmultc(const Complex* left, const Complex* right, Complex* result) {
+void cmultc(const complex_t* left, const complex_t* right, complex_t* result) {
     double realResult = left->real * right->real - left->imag0 * right->imag0;
     double imag0Result = left->real * right->imag0 + left->imag0 * right->real;
 
@@ -117,18 +117,18 @@ void cmultc(const Complex* left, const Complex* right, Complex* result) {
     result->imag0 = imag0Result;
 }
 
-void rmultq(const double left, const Quaternion* right, Quaternion* result) {
+void rmultq(const double left, const quaternion_t* right, quaternion_t* result) {
     qmultr(right, left, result);
 }
 
-void qmultr(const Quaternion* left, const double right, Quaternion* result) {
+void qmultr(const quaternion_t* left, const double right, quaternion_t* result) {
     result->real = left->real * right;
     result->imag0 = left->imag0 * right;
     result->imag1 = left->imag1 * right;
     result->imag2 = left->imag2 * right;
 }
 
-void cmultq(const Complex* left, const Quaternion* right, Quaternion* result) {
+void cmultq(const complex_t* left, const quaternion_t* right, quaternion_t* result) {
     double realResult = left->real * right->real - left->imag0 * right->imag0;
     double imag0Result = left->real * right->imag0 + right->real * left->imag0;
     double imag1Result = left->real * right->imag1 - left->imag0 * right->imag2;
@@ -140,7 +140,7 @@ void cmultq(const Complex* left, const Quaternion* right, Quaternion* result) {
     result->imag2 = imag2Result;
 }
 
-void qmultc(const Quaternion* left, const Complex* right, Quaternion* result) {
+void qmultc(const quaternion_t* left, const complex_t* right, quaternion_t* result) {
     double realResult = left->real * right->real - left->imag0 * right->imag0;
     double imag0Result = left->real * right->imag0 + left->imag0 * right->real;
     double imag1Result = left->imag1 * right->real + left->imag2 * right->imag0;
@@ -152,7 +152,7 @@ void qmultc(const Quaternion* left, const Complex* right, Quaternion* result) {
     result->imag2 = imag2Result;
 }
 
-void qmultq(const Quaternion* left, const Quaternion* right, Quaternion* result) {
+void qmultq(const quaternion_t* left, const quaternion_t* right, quaternion_t* result) {
     double realResult = left->real * right->real - left->imag0 * right->imag0 - left->imag1 * right->imag1 - left->imag2 * right->imag2;
     double imag0Result = left->real * right->imag0 + left->imag0 * right->real - left->imag1 * right->imag2 + left->imag2 * right->imag1;
     double imag1Result = left->real * right->imag1 + left->imag0 * right->imag2 + left->imag1 * right->real - left->imag2 * right->imag0;
@@ -164,20 +164,20 @@ void qmultq(const Quaternion* left, const Quaternion* right, Quaternion* result)
     result->imag2 = imag2Result;
 }
 
-void rdivc(const double left, const Complex* right, Complex* result) {
-    Complex leftAsComplex = { left, 0 };
+void rdivc(const double left, const complex_t* right, complex_t* result) {
+    complex_t leftAsComplex = { left, 0 };
     cdivc(&leftAsComplex, right, result);
 }
 
-void cdivr(const Complex* left, const double right, Complex* result) {
+void cdivr(const complex_t* left, const double right, complex_t* result) {
     result->real = left->real / right;
     result->imag0 = left->imag0 / right;
 }
 
-void cdivc(const Complex* left, const Complex* right, Complex* result) {
-    Complex conjOfRight;
-    Complex numerator;
-    Complex denominator;
+void cdivc(const complex_t* left, const complex_t* right, complex_t* result) {
+    complex_t conjOfRight;
+    complex_t numerator;
+    complex_t denominator;
 
     conjc(right, &conjOfRight);
     cmultc(left, &conjOfRight, &numerator);
@@ -185,7 +185,7 @@ void cdivc(const Complex* left, const Complex* right, Complex* result) {
     cdivr(&numerator, denominator.real, result);
 }
 
-void rdivq(const double left, const Quaternion* right, Quaternion* result) {
+void rdivq(const double left, const quaternion_t* right, quaternion_t* result) {
     double denominator = right->real * right->real + right->imag0 * right->imag0 + right->imag1 * right->imag1 + right->imag2 * right->imag2;
 
     result->real = left * right->real / denominator;
@@ -194,14 +194,14 @@ void rdivq(const double left, const Quaternion* right, Quaternion* result) {
     result->imag2 = -left * right->imag2 / denominator;
 }
 
-void qdivr(const Quaternion* left, const double right, Quaternion* result) {
+void qdivr(const quaternion_t* left, const double right, quaternion_t* result) {
     result->real = left->real / right;
     result->imag0 = left->imag0 / right;
     result->imag1 = left->imag1 / right;
     result->imag2 = left->imag2 / right;
 }
 
-void cdivq(const Complex* left, const Quaternion* right, Quaternion* result) {
+void cdivq(const complex_t* left, const quaternion_t* right, quaternion_t* result) {
     double denominator = right->real * right->real + right->imag0 * right->imag0 + right->imag1 * right->imag1 + right->imag2 * right->imag2;
 
     double realResult = (left->real * right->real + left->imag0 * right->imag0) / denominator;
@@ -215,10 +215,10 @@ void cdivq(const Complex* left, const Quaternion* right, Quaternion* result) {
     result->imag2 = imag2Result;
 }
 
-void qdivc(const Quaternion* left, const Complex* right, Quaternion* result) {
-    Complex conjOfRight;
-    Quaternion numerator;
-    Complex denominator;
+void qdivc(const quaternion_t* left, const complex_t* right, quaternion_t* result) {
+    complex_t conjOfRight;
+    quaternion_t numerator;
+    complex_t denominator;
 
     conjc(right, &conjOfRight);
     qmultc(left, &conjOfRight, &numerator);
@@ -226,7 +226,7 @@ void qdivc(const Quaternion* left, const Complex* right, Quaternion* result) {
     qdivr(&numerator, denominator.real, result);
 }
 
-void qdivq(const Quaternion* left, const Quaternion* right, Quaternion* result) {
+void qdivq(const quaternion_t* left, const quaternion_t* right, quaternion_t* result) {
     double denominator = right->real * right->real + right->imag0 * right->imag0 + right->imag1 * right->imag1 + right->imag2 * right->imag2;
 
     double realResult = (left->real * right->real + left->imag0 * right->imag0 + left->imag1 * right->imag1 + left->imag2 * right->imag2) / denominator;
@@ -240,17 +240,17 @@ void qdivq(const Quaternion* left, const Quaternion* right, Quaternion* result) 
     result->imag2 = imag2Result;
 }
 
-void rpowc(const double left, const Complex* right, Complex* result) {
-    Complex leftAsComplex = { left, 0 };
+void rpowc(const double left, const complex_t* right, complex_t* result) {
+    complex_t leftAsComplex = { left, 0 };
     cpowc(&leftAsComplex, right, result);
 }
 
-void cpowr(const Complex* left, const double right, Complex* result) {
-    Complex rightAsComplex = { right, 0 };
+void cpowr(const complex_t* left, const double right, complex_t* result) {
+    complex_t rightAsComplex = { right, 0 };
     cpowc(left, &rightAsComplex, result);
 }
 
-void cpowc(const Complex* left, const Complex* right, Complex* result) {
+void cpowc(const complex_t* left, const complex_t* right, complex_t* result) {
     bool leftIsZero = (0 == left->real) && (0 == left->imag0);
     bool rightIsZero = (0 == right->real) && (0 == right->imag0);
 
@@ -278,53 +278,53 @@ void cpowc(const Complex* left, const Complex* right, Complex* result) {
     }
 }
 
-void rpowq(const double left, const Quaternion* right, Quaternion* result) {
+void rpowq(const double left, const quaternion_t* right, quaternion_t* result) {
     rmultq(log(left), right, result);
     expq(result, result);
 }
 
-void qpowr(const Quaternion* left, const double right, Quaternion* result) {
-    Quaternion a;
-    Quaternion b;
+void qpowr(const quaternion_t* left, const double right, quaternion_t* result) {
+    quaternion_t a;
+    quaternion_t b;
 
     logq(left, &a);
     qmultr(&a, right, &b);
     expq(&b, result);
 }
 
-void cpowq(const Complex* left, const Quaternion* right, Quaternion* result) {
-    Complex a;
-    Quaternion b;
+void cpowq(const complex_t* left, const quaternion_t* right, quaternion_t* result) {
+    complex_t a;
+    quaternion_t b;
 
     logc(left, &a);
     cmultq(&a, right, &b);
     expq(&b, result);
 }
 
-void qpowc(const Quaternion* left, const Complex* right, Quaternion* result) {
-    Quaternion a;
-    Quaternion b;
+void qpowc(const quaternion_t* left, const complex_t* right, quaternion_t* result) {
+    quaternion_t a;
+    quaternion_t b;
 
     logq(left, &a);
     qmultc(&a, right, &b);
     expq(&b, result);
 }
 
-void qpowq(const Quaternion* left, const Quaternion* right, Quaternion* result) {
-    Quaternion a;
-    Quaternion b;
+void qpowq(const quaternion_t* left, const quaternion_t* right, quaternion_t* result) {
+    quaternion_t a;
+    quaternion_t b;
 
     logq(left, &a);
     qmultq(&a, right, &b);
     expq(&b, result);
 }
 
-void negc(const Complex* com, Complex* result) {
+void negc(const complex_t* com, complex_t* result) {
     result->real = -com->real;
     result->imag0 = -com->imag0;
 }
 
-void negq(const Quaternion* quat, Quaternion* result) {
+void negq(const quaternion_t* quat, quaternion_t* result) {
     result->real = -quat->real;
     result->imag0 = -quat->imag0;
     result->imag1 = -quat->imag1;
@@ -335,79 +335,79 @@ bool reqr(const double left, const double right, const double range) {
     return fabs(left - right) <= range;
 }
 
-bool reqc(const double left, const Complex* right, const double range) {
+bool reqc(const double left, const complex_t* right, const double range) {
     return ceqr(right, left, range);
 }
 
-bool ceqr(const Complex* left, const double right, const double range) {
+bool ceqr(const complex_t* left, const double right, const double range) {
     return fabs(left->real - right) <= range && fabs(left->imag0) <= range;
 }
 
-bool ceqc(const Complex* left, const Complex* right, const double range) {
+bool ceqc(const complex_t* left, const complex_t* right, const double range) {
     return fabs(left->real - right->real) <= range && fabs(left->imag0 - right->imag0) <= range;
 }
 
-bool reqq(const double left, const Quaternion* right, const double range) {
+bool reqq(const double left, const quaternion_t* right, const double range) {
     return qeqr(right, left, range);
 }
 
-bool qeqr(const Quaternion* left, const double right, const double range) {
+bool qeqr(const quaternion_t* left, const double right, const double range) {
     return fabs(left->real - right) <= range && fabs(left->imag0) <= range && fabs(left->imag1) <= range && fabs(left->imag2) <= range;
 }
 
-bool ceqq(const Complex* left, const Quaternion* right, const double range) {
+bool ceqq(const complex_t* left, const quaternion_t* right, const double range) {
     return qeqc(right, left, range);
 }
 
-bool qeqc(const Quaternion* left, const Complex* right, const double range) {
+bool qeqc(const quaternion_t* left, const complex_t* right, const double range) {
     return fabs(left->real - right->real) <= range && fabs(left->imag0 - right->imag0) <= range && fabs(left->imag1) <= range && fabs(left->imag2) <= range;
 }
 
-bool qeqq(const Quaternion* left, const Quaternion* right, const double range) {
+bool qeqq(const quaternion_t* left, const quaternion_t* right, const double range) {
     return fabs(left->real - right->real) <= range && fabs(left->imag0 - right->imag0) <= range && fabs(left->imag1 - right->imag1) <= range && fabs(left->imag2 - right->imag2) <= range;
 }
 
-void conjc(const Complex* com, Complex* result) {
+void conjc(const complex_t* com, complex_t* result) {
     result->real = com->real;
     result->imag0 = -com->imag0;
 }
 
-void conjq(const Quaternion* quat, Quaternion* result) {
+void conjq(const quaternion_t* quat, quaternion_t* result) {
     result->real = quat->real;
     result->imag0 = -quat->imag0;
     result->imag1 = -quat->imag1;
     result->imag2 = -quat->imag2;
 }
 
-void normc(const Complex* com, Complex* result) {
+void normc(const complex_t* com, complex_t* result) {
     cdivr(com, absc(com), result);
 }
 
-void normq(const Quaternion* quat, Quaternion* result) {
+void normq(const quaternion_t* quat, quaternion_t* result) {
     qdivr(quat, absq(quat), result);
 }
 
-double absc(const Complex* com) {
+double absc(const complex_t* com) {
     return sqrt(com->real * com->real + com->imag0 * com->imag0);
 }
 
-double absq(const Quaternion* quat) {
+double absq(const quaternion_t* quat) {
     return sqrt(quat->real * quat->real + quat->imag0 * quat->imag0 + quat->imag1 * quat->imag1 + quat->imag2 * quat->imag2);
 }
 
-void invc(const Complex* com, Complex* result) {
+void invc(const complex_t* com, complex_t* result) {
     rdivc(1, com, result);
 }
 
-void invq(const Quaternion* quat, Quaternion* result) {
-    Quaternion conjugate;
+void invq(const quaternion_t* quat, quaternion_t* result) {
+    quaternion_t conjugate;
     double denominator = quat->real * quat->real + quat->imag0 * quat->imag0 + quat->imag1 * quat->imag1 + quat->imag2 * quat->imag2;
 
     conjq(quat, &conjugate);
     qdivr(&conjugate, denominator, result);
 }
 
-double argc(const Complex* com) {
+double argc(const complex_t* com) {
     if (0 == com->real) {
         if (com->imag0 < 0) {
             return -M_PI_2;
@@ -424,14 +424,14 @@ double argc(const Complex* com) {
     }
 }
 
-void sinc(const Complex* com, Complex* result) {
-    Complex a;
-    Complex b;
-    Complex c;
-    Complex d;
-    Complex e;
-    Complex f;
-    Complex g = { 0, 2 };
+void sinc(const complex_t* com, complex_t* result) {
+    complex_t a;
+    complex_t b;
+    complex_t c;
+    complex_t d;
+    complex_t e;
+    complex_t f;
+    complex_t g = { 0, 2 };
     
     cmultc(&IMAG0, com, &a);
     negc(&IMAG0, &b);
@@ -442,13 +442,13 @@ void sinc(const Complex* com, Complex* result) {
     cdivc(&f, &g, result);
 }
 
-void cosc(const Complex* com, Complex* result) {
-    Complex a;
-    Complex b;
-    Complex c;
-    Complex d;
-    Complex e;
-    Complex f;
+void cosc(const complex_t* com, complex_t* result) {
+    complex_t a;
+    complex_t b;
+    complex_t c;
+    complex_t d;
+    complex_t e;
+    complex_t f;
 
     negc(com, &a);
     cmultc(com, &IMAG0, &b);
@@ -459,20 +459,20 @@ void cosc(const Complex* com, Complex* result) {
     cdivr(&f, 2, result);
 }
 
-void tanc(const Complex* com, Complex* result) {
-    Complex sinValue;
-    Complex cosValue;
+void tanc(const complex_t* com, complex_t* result) {
+    complex_t sinValue;
+    complex_t cosValue;
 
     sinc(com, &sinValue);
     cosc(com, &cosValue);
     cdivc(&sinValue, &cosValue, result);
 }
 
-void sinhc(const Complex* com, Complex* result) {
-    Complex a;
-    Complex b;
-    Complex c;
-    Complex d;
+void sinhc(const complex_t* com, complex_t* result) {
+    complex_t a;
+    complex_t b;
+    complex_t c;
+    complex_t d;
 
     negc(com, &a);
     expc(com, &b);
@@ -481,11 +481,11 @@ void sinhc(const Complex* com, Complex* result) {
     cdivr(&d, 2, result);
 }
 
-void coshc(const Complex* com, Complex* result) {
-    Complex a;
-    Complex b;
-    Complex c;
-    Complex d;
+void coshc(const complex_t* com, complex_t* result) {
+    complex_t a;
+    complex_t b;
+    complex_t c;
+    complex_t d;
 
     negc(com, &a);
     expc(com, &b);
@@ -494,23 +494,23 @@ void coshc(const Complex* com, Complex* result) {
     cdivr(&d, 2, result);
 }
 
-void tanhc(const Complex* com, Complex* result) {
-    Complex sinhValue;
-    Complex coshValue;
+void tanhc(const complex_t* com, complex_t* result) {
+    complex_t sinhValue;
+    complex_t coshValue;
 
     sinhc(com, &sinhValue);
     coshc(com, &coshValue);
     cdivc(&sinhValue, &coshValue, result);
 }
 
-void asinc(const Complex* com, Complex* result) {
-    Complex a;
-    Complex b;
-    Complex c;
-    Complex d;
-    Complex e;
-    Complex f;
-    Complex g;
+void asinc(const complex_t* com, complex_t* result) {
+    complex_t a;
+    complex_t b;
+    complex_t c;
+    complex_t d;
+    complex_t e;
+    complex_t f;
+    complex_t g;
 
     negc(&IMAG0, &a);
     cmultc(com, com, &b);
@@ -522,14 +522,14 @@ void asinc(const Complex* com, Complex* result) {
     cmultc(&a, &g, result);
 }
 
-void acosc(const Complex* com, Complex* result) {
-    Complex a;
-    Complex b;
-    Complex c;
-    Complex d;
-    Complex e;
-    Complex f;
-    Complex g;
+void acosc(const complex_t* com, complex_t* result) {
+    complex_t a;
+    complex_t b;
+    complex_t c;
+    complex_t d;
+    complex_t e;
+    complex_t f;
+    complex_t g;
 
     cmultc(com, com, &a);
     rminusc(1, &a, &b);
@@ -541,14 +541,14 @@ void acosc(const Complex* com, Complex* result) {
     rplusc(M_PI_2, &g, result);
 }
 
-void atanc(const Complex* com, Complex* result) {
-    Complex a;
-    Complex b;
-    Complex c;
-    Complex d;
-    Complex e;
-    Complex f;
-    Complex g;
+void atanc(const complex_t* com, complex_t* result) {
+    complex_t a;
+    complex_t b;
+    complex_t c;
+    complex_t d;
+    complex_t e;
+    complex_t f;
+    complex_t g;
 
     cmultc(&IMAG0, com, &a);
     rminusc(1, &a, &b);
@@ -560,11 +560,11 @@ void atanc(const Complex* com, Complex* result) {
     cdivr(&g, 2, result);
 }
 
-void asinhc(const Complex* com, Complex* result) {
-    Complex a;
-    Complex b;
-    Complex c;
-    Complex d;
+void asinhc(const complex_t* com, complex_t* result) {
+    complex_t a;
+    complex_t b;
+    complex_t c;
+    complex_t d;
 
     cmultc(com, com, &a);
     rplusc(1, &a, &b);
@@ -573,13 +573,13 @@ void asinhc(const Complex* com, Complex* result) {
     logc(&d, result);
 }
 
-void acoshc(const Complex* com, Complex* result) {
-    Complex a;
-    Complex b;
-    Complex c;
-    Complex d;
-    Complex e;
-    Complex f;
+void acoshc(const complex_t* com, complex_t* result) {
+    complex_t a;
+    complex_t b;
+    complex_t c;
+    complex_t d;
+    complex_t e;
+    complex_t f;
 
     cplusr(com, 1, &a);
     cminusr(com, 1, &b);
@@ -590,12 +590,12 @@ void acoshc(const Complex* com, Complex* result) {
     logc(&f, result);
 }
 
-void atanhc(const Complex* com, Complex* result) {
-    Complex a;
-    Complex b;
-    Complex c;
-    Complex d;
-    Complex e;
+void atanhc(const complex_t* com, complex_t* result) {
+    complex_t a;
+    complex_t b;
+    complex_t c;
+    complex_t d;
+    complex_t e;
 
     rplusc(1, com, &a);
     rminusc(1, com, &b);
@@ -605,15 +605,15 @@ void atanhc(const Complex* com, Complex* result) {
     cdivr(&e, 2, result);
 }
 
-void sqrtc(const Complex* com, Complex* result) {
+void sqrtc(const complex_t* com, complex_t* result) {
     cpowr(com, 0.5, result);
 }
 
-void sqrtq(const Quaternion* quat, Quaternion* result) {
+void sqrtq(const quaternion_t* quat, quaternion_t* result) {
     qpowr(quat, 0.5, result);
 }
 
-void logc(const Complex* com, Complex* result) {
+void logc(const complex_t* com, complex_t* result) {
     double argValue = argc(com);
 
     if (NAN == argValue) {
@@ -626,7 +626,7 @@ void logc(const Complex* com, Complex* result) {
     }
 }
 
-void logq(const Quaternion* quat, Quaternion* result) {
+void logq(const quaternion_t* quat, quaternion_t* result) {
     if (0 == quat->imag0 && 0 == quat->imag1 && 0 == quat->imag2) {
         if (0 == quat->real) {
             result->real = NAN;
@@ -642,11 +642,11 @@ void logq(const Quaternion* quat, Quaternion* result) {
         }
     }
     else {
-        Quaternion a = { 0, quat->imag0, quat->imag1, quat->imag2 };
+        quaternion_t a = { 0, quat->imag0, quat->imag1, quat->imag2 };
         double b = absq(quat);
 
-        Quaternion c;
-        Quaternion d;
+        quaternion_t c;
+        quaternion_t d;
 
         normq(&a, &c);
         qmultr(&c, acos(quat->real / b), &d);
@@ -654,31 +654,31 @@ void logq(const Quaternion* quat, Quaternion* result) {
     }
 }
 
-void log10c(const Complex* com, Complex* result) {
-    Complex a;
+void log10c(const complex_t* com, complex_t* result) {
+    complex_t a;
 
     logc(com, &a);
     cdivr(&a, log(10), result);
 }
 
-void log10q(const Quaternion* quat, Quaternion* result) {
-    Quaternion a;
+void log10q(const quaternion_t* quat, quaternion_t* result) {
+    quaternion_t a;
 
     logq(quat, &a);
     qdivr(&a, log(10), result);
 }
 
-void expc(const Complex* com, Complex* result) {
+void expc(const complex_t* com, complex_t* result) {
     rpowc(M_E, com, result);
 }
 
-void expq(const Quaternion* quat, Quaternion* result) {
-    Quaternion a = { 0, quat->imag0, quat->imag1, quat->imag2 };
+void expq(const quaternion_t* quat, quaternion_t* result) {
+    quaternion_t a = { 0, quat->imag0, quat->imag1, quat->imag2 };
     double b = absq(&a);
     
-    Quaternion c;
-    Quaternion d;
-    Quaternion e;
+    quaternion_t c;
+    quaternion_t d;
+    quaternion_t e;
     
     normq(&a, &c);
     qmultr(&c, sin(b), &d);

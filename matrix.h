@@ -5,44 +5,50 @@ typedef struct matrix {
     double** table;
     size_t rows;
     size_t cols;
-} Matrix;
+} matrix_t;
 
-bool equalDimensions(const Matrix*, const Matrix*);
+bool equal_dimensions(const matrix_t*, const matrix_t*);
 
-bool multipliable(const Matrix*, const Matrix*);
+bool multipliable(const matrix_t*, const matrix_t*);
 
-bool divisible(const Matrix*, const Matrix*);
+bool divisible(const matrix_t*, const matrix_t*);
 
-bool is_square(const Matrix*);
+bool is_square(const matrix_t*);
 
-bool mplusm(const Matrix*, const Matrix*, Matrix*);
+bool mplusm(const matrix_t*, const matrix_t*, matrix_t*);
 
-bool mminusm(const Matrix*, const Matrix*, Matrix*);
+bool mminusm(const matrix_t*, const matrix_t*, matrix_t*);
 
-void rmultm(const double, const Matrix*, Matrix*);
+void rmultm(const double, const matrix_t*, matrix_t*);
 
-void mmultr(const Matrix*, const double, Matrix*);
+void mmultr(const matrix_t*, const double, matrix_t*);
 
-bool mmultm(const Matrix*, const Matrix*, Matrix*);
+bool mmultm(const matrix_t*, const matrix_t*, matrix_t*);
 
-bool mdivm(const Matrix*, const Matrix*, Matrix*);
+void mdivr(const matrix_t*, const double, matrix_t*);
 
-void negm(const Matrix*, Matrix*);
+bool mdivm(const matrix_t*, const matrix_t*, matrix_t*);
 
-bool detm(const Matrix*, double*);
+void negm(const matrix_t*, matrix_t*);
 
-bool invm(const Matrix*, Matrix*);
+bool detm(const matrix_t*, double*);
 
-void transposem(const Matrix*, Matrix*);
+bool invm(const matrix_t*, matrix_t*);
 
-void add_rows(const Matrix*, const size_t, const size_t, Matrix*);
+void transposem(const matrix_t*, matrix_t*);
 
-void row_multiply(const Matrix*, const size_t, const double, Matrix*);
+void add_rows(const matrix_t*, const size_t, const size_t, matrix_t*);
 
-void row_swap(const Matrix*, const size_t, const size_t, Matrix*);
+void row_mult(const matrix_t*, const size_t, const double, matrix_t*);
 
-void add_cols(const Matrix*, const size_t, const size_t, Matrix*);
+void row_swap(const matrix_t*, const size_t, const size_t, matrix_t*);
 
-void col_multiply(const Matrix*, const size_t, const double, Matrix*);
+void add_cols(const matrix_t*, const size_t, const size_t, matrix_t*);
 
-void col_swap(const Matrix*, const size_t, const size_t, Matrix*);
+void col_mult(const matrix_t*, const size_t, const double, matrix_t*);
+
+void col_swap(const matrix_t*, const size_t, const size_t, matrix_t*);
+
+bool subm(const matrix_t*, const size_t, const size_t, matrix_t*);
+
+void cofactorsm(const matrix_t*, matrix_t*);

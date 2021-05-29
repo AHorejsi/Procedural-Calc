@@ -4,30 +4,30 @@
 typedef struct vector {
     double* position;
     size_t dimensions;
-} Vector;
+} vector_t;
 
-bool vplusv(const Vector*, const Vector*, Vector*);
+bool vplusv(const vector_t*, const vector_t*, vector_t*);
 
-bool vminusv(const Vector*, const Vector*, Vector*);
+bool vminusv(const vector_t*, const vector_t*, vector_t*);
 
-void vmultr(const Vector*, const double, Vector*);
+void vmultr(const vector_t*, const double, vector_t*);
 
-void rmultv(const double, const Vector*, Vector*);
+void rmultv(const double, const vector_t*, vector_t*);
 
-bool vdotv(const Vector*, const Vector*, double*);
+bool vdotv(const vector_t*, const vector_t*, double*);
 
-bool vcrossv(const Vector*, const Vector*, Vector*);
+bool vcrossv(const vector_t*, const vector_t*, vector_t*);
 
-void vdivr(const Vector*, const double, Vector*);
+void vdivr(const vector_t*, const double, vector_t*);
 
-void negv(const Vector*, Vector*);
+void negv(const vector_t*, vector_t*);
 
-bool veqv(const Vector*, const Vector*, const double);
+bool veqv(const vector_t*, const vector_t*, const double);
 
-double absv(const Vector*);
+double absv(const vector_t*);
 
-void normv(const Vector*, Vector*);
+void normv(const vector_t*, vector_t*);
 
-bool anglev(const Vector*, const Vector*, double*);
+bool anglev(const vector_t*, const vector_t*, double*);
 
-bool vdistv(const Vector*, const Vector*, double*);
+bool vdistv(const vector_t*, const vector_t*, double*);
