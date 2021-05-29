@@ -610,32 +610,42 @@ void sqrtq(const quaternion_t* quat, quaternion_t* result) {
 }
 
 void logc(const complex_t* com, complex_t* result) {
-    double argValue = argc(com);
-
-    if (NAN == argValue) {
+    if (0 == com->real && 0 == com->imag0) {
         result->real = NAN;
         result->imag0 = NAN;
     }
     else {
         result->real = log(absc(com));
-        result->imag0 = argValue;
+        result->imag0 = argc(com);
     }
 }
 
 void logq(const quaternion_t* quat, quaternion_t* result) {
-    if (0 == quat->imag0 && 0 == quat->imag1 && 0 == quat->imag2) {
-        if (0 == quat->real) {
-            result->real = NAN;
-            result->imag0 = NAN;
-            result->imag1 = NAN;
-            result->imag2 = NAN;
-        }
-        else {
-            result->real = log(quat->real);
-            result->imag0 = 0;
-            result->imag1 = 0;
-            result->imag2 = 0;
-        }
+    bool realIsZero = 0 == quat->real;
+    bool imag0IsZero = 0 == quat->imag0;
+    bool imag1IsZero = 0 == quat->imag1;
+    bool imag2IsZero = 0 == quat->imag2;
+
+    if (realIsZero && imag0IsZero && imag1IsZero && imag2IsZero) {
+        result->real = NAN;
+        result->imag0 = NAN;
+        result->imag1 = NAN;
+        result->imag2 = NAN;
+    }
+    else if (imag0IsZero && imag1IsZero && imag2IsZero) {
+        result->real = log(quat->real);
+        result->imag0 = 0;
+        result->imag1 = 0;
+        result->imag2 = 0;
+    }
+    else if (imag1IsZero && imag2IsZero) {
+        complex_t com = { quat->real, quat->imag0 };
+        logc(&com, &com);
+
+        result->real = com.real;
+        result->imag0 = com.real;
+        result->imag1 = 0;
+        result->imag2 = 0;
     }
     else {
         quaternion_t a = { 0, quat->imag0, quat->imag1, quat->imag2 };
