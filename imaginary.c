@@ -130,7 +130,7 @@ void qmultr(const quaternion_t* left, const double right, quaternion_t* result) 
 
 void cmultq(const complex_t* left, const quaternion_t* right, quaternion_t* result) {
     double realResult = left->real * right->real - left->imag0 * right->imag0;
-    double imag0Result = left->real * right->imag0 + right->real * left->imag0;
+    double imag0Result = left->real * right->imag0 + left->imag0 + right->real;
     double imag1Result = left->real * right->imag1 - left->imag0 * right->imag2;
     double imag2Result = left->real * right->imag2 + left->imag0 * right->imag1;
 
@@ -254,16 +254,12 @@ void cpowc(const complex_t* left, const complex_t* right, complex_t* result) {
     bool leftIsZero = (0 == left->real) && (0 == left->imag0);
     bool rightIsZero = (0 == right->real) && (0 == right->imag0);
 
-    if (leftIsZero && rightIsZero) {
-        result->real = NAN;
-        result->imag0 = NAN;
+    if (rightIsZero) {
+        result->real = 1;
+        result->imag0 = 0;
     }
     else if (leftIsZero) {
         result->real = 0;
-        result->imag0 = 0;
-    }
-    else if (rightIsZero) {
-        result->real = 1;
         result->imag0 = 0;
     }
     else {
