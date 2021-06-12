@@ -7,17 +7,17 @@
 #include "number_list.h"
 #include "imaginary.h"
 
-void rplusl(const double left, const number_list_t* right, number_list_t* result) {
-    lplusr(right, left, result);
+void rplusrl(const double left, const real_list_t* right, real_list_t* result) {
+    rlplusr(right, left, result);
 }
 
-void _lplusr_in_place(const double value, number_list_t* result) {
+void _lplusr_in_place(const double value, real_list_t* result) {
     for (size_t index = 0; index < result->size; ++index) {
         result->values[index] += value;
     }
 }
 
-void lplusr(const number_list_t* left, const double right, number_list_t* result) {
+void rlplusr(const real_list_t* left, const double right, real_list_t* result) {
     if (left == result) {
         _lplusr_in_place(right, result);
     }
@@ -34,13 +34,13 @@ void lplusr(const number_list_t* left, const double right, number_list_t* result
     }
 }
 
-void _lplusl_in_place(const number_list_t* other, number_list_t* result) {
+void _lplusl_in_place(const real_list_t* other, real_list_t* result) {
     for (size_t index = 0; index < other->size; ++index) {
         result->values[index] += other->values[index];
     }
 }
 
-bool lplusl(const number_list_t* left, const number_list_t* right, number_list_t* result) {
+bool rlplusrl(const real_list_t* left, const real_list_t* right, real_list_t* result) {
     if (left->size != right->size) {
         return false;
     }
@@ -66,13 +66,13 @@ bool lplusl(const number_list_t* left, const number_list_t* right, number_list_t
     return true;
 }
 
-void _rminusl_in_place(const double value, number_list_t* result) {
+void _rminusl_in_place(const double value, real_list_t* result) {
     for (size_t index = 0; index < result->size; ++index) {
         result->values[index] = value - result->values[index];
     }
 }
 
-void rminusl(const double left, const number_list_t* right, number_list_t* result) {
+void rminusrl(const double left, const real_list_t* right, real_list_t* result) {
     if (right == result) {
         _rminusl_in_place(left, result);
     }
@@ -89,13 +89,13 @@ void rminusl(const double left, const number_list_t* right, number_list_t* resul
     }
 }
 
-void _lminusr_in_place(const double value, number_list_t* result) {
+void _lminusr_in_place(const double value, real_list_t* result) {
     for (size_t index = 0; index < result->size; ++index) {
         result->values[index] -= value;
     }
 }
 
-void lminusr(const number_list_t* left, const double right, number_list_t* result) {
+void rlminusr(const real_list_t* left, const double right, real_list_t* result) {
     if (left == result) {
         _lminusr_in_place(right, result);
     }
@@ -112,13 +112,13 @@ void lminusr(const number_list_t* left, const double right, number_list_t* resul
     }
 }
 
-void _lminusl_in_place(const number_list_t* other, number_list_t* result) {
+void _lminusl_in_place(const real_list_t* other, real_list_t* result) {
     for (size_t index = 0; index < other->size; ++index) {
         result->values[index] -= other->values[index];
     }
 }
 
-bool lminusl(const number_list_t* left, const number_list_t* right, number_list_t* result) {
+bool rlminusrl(const real_list_t* left, const real_list_t* right, real_list_t* result) {
     if (left->size != right->size) {
         return false;
     }
@@ -144,17 +144,17 @@ bool lminusl(const number_list_t* left, const number_list_t* right, number_list_
     return true;
 }
 
-void rmultl(const double left, const number_list_t* right, number_list_t* result) {
-    lmultr(right, left, result);
+void rmultrl(const double left, const real_list_t* right, real_list_t* result) {
+    rlmultr(right, left, result);
 }
 
-void _lmultr_in_place(const double value, number_list_t* result) {
+void _lmultr_in_place(const double value, real_list_t* result) {
     for (size_t index = 0; index < result->size; ++index) {
         result->values[index] *= value;
     }
 }
 
-void lmultr(const number_list_t* left, const double right, number_list_t* result) {
+void rlmultr(const real_list_t* left, const double right, real_list_t* result) {
     if (left == result) {
         _lmultr_in_place(right, result);
     }
@@ -171,13 +171,13 @@ void lmultr(const number_list_t* left, const double right, number_list_t* result
     }
 }
 
-void _lmultl_in_place(const number_list_t* other, number_list_t* result) {
+void _lmultl_in_place(const real_list_t* other, real_list_t* result) {
     for (size_t index = 0; index < other->size; ++index) {
         result->values[index] *= other->values[index];
     }
 }
 
-bool lmultl(const number_list_t* left, const number_list_t* right, number_list_t* result) {
+bool rlmultrl(const real_list_t* left, const real_list_t* right, real_list_t* result) {
     if (left->size != right->size) {
         return false;
     }
@@ -203,13 +203,13 @@ bool lmultl(const number_list_t* left, const number_list_t* right, number_list_t
     return true;
 }
 
-void _rdivl_in_place(const double value, number_list_t* result) {
+void _rdivl_in_place(const double value, real_list_t* result) {
     for (size_t index = 0; index < result->size; ++index) {
         result->values[index] = value / result->values[index];
     }
 }
 
-void rdivl(const double left, const number_list_t* right, number_list_t* result) {
+void rdivrl(const double left, const real_list_t* right, real_list_t* result) {
     if (right == result) {
         _rdivl_in_place(left, result);
     }
@@ -226,13 +226,13 @@ void rdivl(const double left, const number_list_t* right, number_list_t* result)
     }
 }
 
-void _ldivr_in_place(const double value, number_list_t* result) {
+void _ldivr_in_place(const double value, real_list_t* result) {
     for (size_t index = 0; index < result->size; ++index) {
         result->values[index] /= value;
     }
 }
 
-void ldivr(const number_list_t* left, const double right, number_list_t* result) {
+void rldivr(const real_list_t* left, const double right, real_list_t* result) {
     if (left == result) {
         _ldivr_in_place(right, result);
     }
@@ -249,13 +249,13 @@ void ldivr(const number_list_t* left, const double right, number_list_t* result)
     }
 }
 
-void _ldivl_in_place(const number_list_t* other, number_list_t* result) {
+void _ldivl_in_place(const real_list_t* other, real_list_t* result) {
     for (size_t index = 0; index < other->size; ++index) {
         result->values[index] /= other->values[index];
     }
 }
 
-bool ldivl(const number_list_t* left, const number_list_t* right, number_list_t* result) {
+bool rldivrl(const real_list_t* left, const real_list_t* right, real_list_t* result) {
     if (left->size != right->size) {
         return false;
     }
@@ -281,11 +281,11 @@ bool ldivl(const number_list_t* left, const number_list_t* right, number_list_t*
     return true;
 }
 
-void negl(const number_list_t* list, number_list_t* result) {
-    lmultr(list, -1, result);
+void negrl(const real_list_t* list, real_list_t* result) {
+    rlmultr(list, -1, result);
 }
 
-bool leql(const number_list_t* left, const number_list_t* right, const double range) {
+bool rleqrl(const real_list_t* left, const real_list_t* right, const double range) {
     if (left->size != right->size) {
         return false;
     }
@@ -299,7 +299,7 @@ bool leql(const number_list_t* left, const number_list_t* right, const double ra
     return true;
 }
 
-double minl(const number_list_t* list) {
+double minrl(const real_list_t* list) {
     double minValue = DBL_MAX;
 
     for (size_t index = 0; index < list->size; ++index) {
@@ -311,7 +311,7 @@ double minl(const number_list_t* list) {
     return minValue;
 }
 
-double maxl(const number_list_t* list) {
+double maxrl(const real_list_t* list) {
     double maxValue = -DBL_MAX;
 
     for (size_t index = 0; index < list->size; ++index) {
@@ -323,7 +323,7 @@ double maxl(const number_list_t* list) {
     return maxValue;
 }
 
-double suml(const number_list_t* list) {
+double sumrl(const real_list_t* list) {
     double result = 0;
 
     for (size_t index = 0; index < list->size; ++index) {
@@ -333,7 +333,7 @@ double suml(const number_list_t* list) {
     return result;
 }
 
-double prodl(const number_list_t* list) {
+double prodrl(const real_list_t* list) {
     if (0 == list->size) {
         return 0;
     }
@@ -347,8 +347,8 @@ double prodl(const number_list_t* list) {
     return result;
 }
 
-double meanl(const number_list_t* list) {
-    return suml(list) / list->size;
+double meanrl(const real_list_t* list) {
+    return sumrl(list) / list->size;
 }
 
 size_t _partition(double* arr, size_t low, size_t high) {
@@ -389,7 +389,7 @@ double _quick_select(double* arr, size_t low, size_t high, size_t index) {
     }
 }
 
-double medianl(const number_list_t* list) {
+double medianrl(const real_list_t* list) {
     size_t byteSize = list->size * sizeof(double);
     double* copyArr = (double*)malloc(byteSize);
     memcpy(copyArr, list->values, byteSize);
@@ -425,7 +425,7 @@ int _compare(const void* left, const void* right) {
     }
 }
 
-void _make_number_list_from_mode(double* values, size_t size, number_list_t* result) {
+void _make_number_list_from_mode(double* values, size_t size, real_list_t* result) {
     double byteSize = size * sizeof(double);
     double* resultValues = (double*)malloc(byteSize);
     memcpy(resultValues, values, byteSize);
@@ -437,7 +437,7 @@ void _make_number_list_from_mode(double* values, size_t size, number_list_t* res
     result->size = size;
 }
 
-void model(const number_list_t* list, const double range, number_list_t* result) {
+void moderl(const real_list_t* list, const double range, real_list_t* result) {
     size_t sizeOfDouble = sizeof(double);
     size_t byteSize = list->size * sizeOfDouble;
     double* copyArr = (double*)malloc(byteSize);
@@ -479,18 +479,18 @@ void model(const number_list_t* list, const double range, number_list_t* result)
     _make_number_list_from_mode(mode, modeIndex, result);
 }
 
-double rangel(const number_list_t* list) {
-    return maxl(list) - minl(list);
+double rangel(const real_list_t* list) {
+    return maxrl(list) - minrl(list);
 }
 
-double midrangel(const number_list_t* list) {
-    return (maxl(list) + minl(list)) / 2;
+double midrangel(const real_list_t* list) {
+    return (maxrl(list) + minrl(list)) / 2;
 }
 
-double variancel(const number_list_t* list) {
+double variancel(const real_list_t* list) {
     double result = 0;
     
-    double meanValue = meanl(list);
+    double meanValue = meanrl(list);
     for (size_t index = 0; index < list->size; ++index) {
         double diff = list->values[index] - meanValue;
         result += diff * diff;
@@ -499,11 +499,11 @@ double variancel(const number_list_t* list) {
     return result / (list->size - 1);
 }
 
-double stddevl(const number_list_t* list) {
+double stddevl(const real_list_t* list) {
     return sqrt(variancel(list));
 }
 
-bool subl(const number_list_t* list, const size_t startIndex, const size_t endIndex, number_list_t* result) {
+bool subl(const real_list_t* list, const size_t startIndex, const size_t endIndex, real_list_t* result) {
     if (startIndex < 0 || startIndex >= list->size) {
         return false;
     }

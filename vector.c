@@ -626,13 +626,13 @@ bool rvanglecv(const real_vector_t* left, const complex_vector_t* right, complex
     complex_t dotProduct;
 
     if (rvdotcv(left, right, &dotProduct)) {
-        complex_t a;
+        double a;
         complex_t b;
 
-        absrv(left, &a);
+        a = absrv(left);
         abscv(right, &b);
-        cmultc(&a, &b, &a);
-        cdivc(&dotProduct, &a, result);
+        rmultc(a, &b, &b);
+        cdivc(&dotProduct, &b, result);
 
         return true;
     }
@@ -646,11 +646,11 @@ bool cvanglerv(const complex_vector_t* left, const real_vector_t* right, complex
 
     if (cvdotrv(left, right, &dotProduct)) {
         complex_t a;
-        complex_t b;
+        double b;
 
         abscv(left, &a);
-        absrv(right, &b);
-        cmultc(&a, &b, &a);
+        b = absrv(right);
+        cmultr(&a, b, &a);
         cdivc(&dotProduct, &a, result);
 
         return true;
